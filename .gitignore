@@ -1,0 +1,29 @@
+# ==========================================
+# Backend — Java / Maven / Spring Boot
+# ==========================================
+backend/target/
+backend/.mvn/
+!backend/.mvn/wrapper/maven-wrapper.jar
+backend/*.class
+backend/HELP.md
+
+# ==========================================
+# Frontend — Node / Vite / React
+# ==========================================
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+
+# ==========================================
+# IDE / OS dosyaları
+# ==========================================
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Maven (kök)
+apache-maven-3.9.15/
+maven.zip

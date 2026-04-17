@@ -36,6 +36,12 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        // Zaten veri yüklüyse tekrar yükleme (Railway yeniden başlatma güvenliği)
+        if (userRepository.count() > 0) {
+            System.out.println("✅ Veritabanında kullanıcılar mevcut — DataLoader atlanıyor.");
+            return;
+        }
+
         // ---- Ana Kullanıcı ----
         User ilgin = new User("ilginyurekci", authService.hashPassword("Ilgın2007."), "İlgın Yürekci");
         ilgin.setEmail("ilginyurekci@example.com");
@@ -87,3 +93,4 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("✅ Kullanıcılar: ilginyurekci/Ilgın2007. | demo/demo123");
     }
 }
+
