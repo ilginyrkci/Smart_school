@@ -43,15 +43,13 @@ public class DataLoader implements CommandLineRunner {
         }
 
         // ---- Ana Kullanıcı ----
-        User ilgin = new User("ilginyurekci", authService.hashPassword("Ilgın2007."), "İlgın Yürekci");
-        ilgin.setEmail("ilginyurekci@example.com");
-        ilgin.setAvatarColor("#7c3aed");
+        User ilgin = new User("ilginyurekci", authService.hashPassword("Ilgın2007."), "İlgın Yürekci", "ilginyurekci@ogrenci.edu.tr");
+        ilgin.setAvatarColor("#4F46E5");
         userRepository.save(ilgin);
         Long ilginId = ilgin.getId();
 
         // ---- Demo Kullanıcı ----
-        User demo = new User("demo", authService.hashPassword("demo123"), "Demo Kullanıcısı");
-        demo.setEmail("demo@finanskocuu.tr");
+        User demo = new User("demo", authService.hashPassword("demo123"), "Demo Kullanıcısı", "demo@ogrenci.edu.tr");
         demo.setAvatarColor("#6366f1");
         userRepository.save(demo);
         Long demoId = demo.getId();
