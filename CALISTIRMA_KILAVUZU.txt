@@ -1,0 +1,239 @@
+
+╔══════════════════════════════════════════════════════════════════════╗
+║          AKILLI HARÇLIK - VS CODE'DA ÇALIŞTIRMA KILAVUZU            ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  YÖNTEM 1 — EN KOLAY: BASLAT.bat (Tavsiye Edilen)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Proje klasöründe hazır bir başlatıcı var!
+
+1. Dosya Gezgini'nde şu klasörü aç:
+   C:\Users\DELL\Desktop\smart-finance-coach\
+
+2. "BASLAT.bat" dosyasına çift tıkla
+
+3. Backend ve Frontend otomatik olarak başlar:
+   → Frontend : http://localhost:5173
+   → Backend  : http://localhost:8080
+   → H2 DB    : http://localhost:8080/h2-console
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  YÖNTEM 2 — VS CODE TERMINAL İLE MANUEL ÇALIŞTIRMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[ÖN GEREKSINIMLER]
+─────────────────
+✔ Java JDK 21+       → https://adoptium.net/
+✔ Node.js 18+        → https://nodejs.org/
+✔ Apache Maven 3.9+  → Projede "apache-maven-3.9.15" klasörü mevcut
+✔ VS Code            → https://code.visualstudio.com/
+
+VS Code Eklentileri (tavsiye):
+  - Extension Pack for Java   (Microsoft)
+  - Spring Boot Extension Pack (VMware)
+  - ES7+ React/Redux Snippets
+  - Prettier - Code Formatter
+
+─────────────────────────────────────
+  ADIM 1: Projeyi VS Code'da Aç
+─────────────────────────────────────
+
+1. VS Code'u aç
+2. File → Open Folder...
+3. Şu klasörü seç:
+   C:\Users\DELL\Desktop\smart-finance-coach
+
+─────────────────────────────────────
+  ADIM 2: Backend'i Başlat (Terminal 1)
+─────────────────────────────────────
+
+VS Code'da yeni bir Terminal aç: (Ctrl + ` veya Terminal → New Terminal)
+
+Şu komutları sırayla yaz:
+
+  cd backend
+
+  NOT: Eğer Maven kurulu değilse, şu yolu ortam değişkenine ekle:
+       set MAVEN_HOME=C:\Users\DELL\Desktop\smart-finance-coach\apache-maven-3.9.15
+       set PATH=%MAVEN_HOME%\bin;%PATH%
+
+  mvn spring-boot:run
+
+Backend başarıyla başladığında şu mesajı görürsün:
+  "Started SmartFinanceCoachApplication in X.XXX seconds"
+
+Backend adresi: http://localhost:8080
+
+─────────────────────────────────────
+  ADIM 3: Frontend'i Başlat (Terminal 2)
+─────────────────────────────────────
+
+VS Code'da 2. bir Terminal aç: (+ butonuna tıkla)
+
+Şu komutları sırayla yaz:
+
+  cd frontend
+  npm install          ← (ilk seferinde çalıştır)
+  npm run dev
+
+Frontend başarıyla başladığında şu mesajı görürsün:
+  "  ➜  Local:   http://localhost:5173/"
+
+Frontend adresi: http://localhost:5173
+
+─────────────────────────────────────
+  ADIM 4: Tarayıcıda Aç
+─────────────────────────────────────
+
+Tarayıcıyı aç ve şu adresi yaz:
+  http://localhost:5173
+
+Ana sayfa (Landing Page) görünmelidir.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  YÖNTEM 3 — VS CODE TASKS İLE OTOMATİK ÇALIŞTIRMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VS Code'da hem backend hem frontend'i tek tuşla başlatmak için:
+
+1. Ctrl+Shift+P → "Tasks: Run Task" yaz
+2. "Start Backend" veya "Start Frontend" seç
+   (Bu seçenekler .vscode/tasks.json dosyasından gelir)
+
+Eğer bu dosya yoksa, aşağıdaki içeriği
+.vscode/tasks.json olarak kaydet:
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Backend",
+      "type": "shell",
+      "command": "mvn spring-boot:run",
+      "options": {
+        "cwd": "${workspaceFolder}/backend",
+        "env": {
+          "MAVEN_HOME": "${workspaceFolder}/apache-maven-3.9.15",
+          "PATH": "${workspaceFolder}/apache-maven-3.9.15/bin;${env:PATH}"
+        }
+      },
+      "group": "build"
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "group": "build"
+    }
+  ]
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TEST HESAPLARI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Uygulama ilk başladığında otomatik örnek veriler yüklenir:
+
+Kullanıcı 1:
+  Kullanıcı Adı : ilginyurekci
+  Şifre         : Ilgın2007.
+
+Kullanıcı 2 (Demo):
+  Kullanıcı Adı : demo
+  Şifre         : demo123
+
+Yeni kayıt için: .edu.tr veya .edu uzantılı bir mail gereklidir
+  Örnek: ogrenci@universite.edu.tr
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  VERİTABANI YÖNETİMİ (H2 Console)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Backend çalışırken tarayıcıda aç:
+  http://localhost:8080/h2-console
+
+Bağlantı bilgileri:
+  JDBC URL  : jdbc:h2:mem:finans
+  Username  : sa
+  Password  : (boş bırak)
+
+H2 Console'da tüm verileri görebilir ve SQL sorgularını çalıştırabilirsin.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PROJE YAPISI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+smart-finance-coach/
+│
+├── BASLAT.bat                  ← Tek tıkla başlatıcı
+├── backend/                    ← Java Spring Boot API
+│   ├── src/main/java/com/finans/
+│   │   ├── controller/         ← REST API endpoint'leri
+│   │   ├── service/            ← İş mantığı
+│   │   ├── model/              ← Veritabanı modelleri
+│   │   ├── repository/         ← Veritabanı işlemleri
+│   │   └── DataLoader.java     ← Başlangıç verileri
+│   └── src/main/resources/
+│       └── application.properties
+│
+└── frontend/                   ← React + Vite uygulaması
+    ├── src/
+    │   ├── pages/              ← Sayfa bileşenleri
+    │   │   ├── LandingPage.jsx ← Ana sayfa (/)
+    │   │   ├── LoginPage.jsx   ← Giriş & Kayıt (/login)
+    │   │   ├── Dashboard.jsx   ← Panel (/app/dashboard)
+    │   │   ├── Transactions.jsx
+    │   │   ├── Analytics.jsx
+    │   │   ├── Budget.jsx
+    │   │   ├── Coach.jsx
+    │   │   └── ProfilePage.jsx
+    │   ├── components/         ← Paylaşılan bileşenler
+    │   ├── context/            ← Auth & Theme context
+    │   └── services/           ← API çağrıları
+    └── package.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SIKÇA KARŞILAŞILAN SORUNLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ "mvn komutu bulunamadı" hatası
+   → Maven'ı PATH'e ekle:
+   set PATH=C:\Users\DELL\Desktop\smart-finance-coach\apache-maven-3.9.15\bin;%PATH%
+
+❌ "Port 8080 zaten kullanımda" hatası
+   → Eski backend process'i kapat ve tekrar dene
+   Görev Yöneticisi'nde java.exe'yi sonlandır
+
+❌ "npm install" hatası
+   → Node.js'i yeniden kur: https://nodejs.org/
+   → Sonra tekrar: npm install
+
+❌ Frontend API'ye bağlanamıyor
+   → Backend'in çalışıp çalışmadığını kontrol et: http://localhost:8080
+   → frontend/.env dosyası yoksa VITE_API_URL boş olabilir (normal)
+
+❌ "CORS hatası" (tarayıcı konsolunda)
+   → Backend CORS ayarları otomatik yapılmıştır.
+   → Backend ve Frontend'in her ikisinin de çalıştığından emin ol.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HIZLI BAŞLATMA ÖZETI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Terminal 1 (Backend):
+  cd C:\Users\DELL\Desktop\smart-finance-coach\backend
+  set PATH=C:\Users\DELL\Desktop\smart-finance-coach\apache-maven-3.9.15\bin;%PATH%
+  mvn spring-boot:run
+
+Terminal 2 (Frontend):
+  cd C:\Users\DELL\Desktop\smart-finance-coach\frontend
+  npm run dev
+
+Tarayıcı: http://localhost:5173
+
+════════════════════════════════════════════════
+  İyi çalışmalar! 🚀
+════════════════════════════════════════════════
