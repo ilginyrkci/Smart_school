@@ -77,9 +77,7 @@ export default function LoginPage() {
           ))}
         </div>
 
-        <div className="mt-10 pt-8 border-t border-white/10">
-          <p className="text-gray-500 text-sm">Demo hesap: <span className="text-purple-400 font-mono">ilginyurekci</span> / <span className="text-purple-400 font-mono">Ilgın2007.</span></p>
-        </div>
+
       </div>
 
       {/* Right Panel */}
