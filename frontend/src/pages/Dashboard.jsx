@@ -111,7 +111,7 @@ export default function Dashboard() {
       <div className="glass-card p-5 lg:p-6">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-[#2D2D2D] dark:text-[#FFF0E4] font-bold">Son İşlemler</h3>
-          <Link to="/transactions" className="text-[#FF6B6B] dark:text-[#4D96FF] hover:text-[#CC4444] text-xs flex items-center gap-1 transition-colors font-medium">
+          <Link to="/app/transactions" className="text-[#FF6B6B] dark:text-[#4D96FF] hover:text-[#CC4444] text-xs flex items-center gap-1 transition-colors font-medium">
             Tümünü gör <ArrowRight size={12} />
           </Link>
         </div>

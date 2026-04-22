@@ -3,16 +3,17 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import Sidebar      from './components/Sidebar'
 import BottomNav    from './components/BottomNav'
+import LandingPage  from './pages/LandingPage'
+import LoginPage    from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 import Dashboard    from './pages/Dashboard'
 import Transactions from './pages/Transactions'
 import Analytics    from './pages/Analytics'
 import Coach        from './pages/Coach'
 import Budget       from './pages/Budget'
-import LoginPage    from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
 import ProfilePage  from './pages/ProfilePage'
 
-function AppLayout() {
+function ProtectedApp() {
   const { user, loading } = useAuth()
 
   if (loading) return (
@@ -24,31 +25,20 @@ function AppLayout() {
     </div>
   )
 
-  /* ── Giriş yapılmamışsa: sadece /login ve /register ── */
-  if (!user) return (
-    <Routes>
-      <Route path="/login"    element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="*"         element={<Navigate to="/login" replace />} />
-    </Routes>
-  )
+  if (!user) return <Navigate to="/login" replace />
 
-  /* ── Giriş yapılmışsa: ana uygulama ── */
   return (
     <div className="flex h-screen bg-[#FFF7ED] dark:bg-[#0a0a0a] overflow-hidden">
       <Sidebar />
       <main className="flex-1 overflow-y-auto pb-16 lg:pb-0 bg-[#FFF7ED] dark:bg-[#0a0a0a]">
         <Routes>
-          <Route path="/"             element={<Dashboard />} />
-          <Route path="/transactions" element={<Transactions />} />
-          <Route path="/analytics"    element={<Analytics />} />
-          <Route path="/coach"        element={<Coach />} />
-          <Route path="/budget"       element={<Budget />} />
-          <Route path="/profile"      element={<ProfilePage />} />
-          {/* /login veya /register'a girilirse ana sayfaya at */}
-          <Route path="/login"        element={<Navigate to="/" replace />} />
-          <Route path="/register"     element={<Navigate to="/" replace />} />
-          <Route path="*"             element={<Navigate to="/" replace />} />
+          <Route path="dashboard"    element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions />} />
+          <Route path="analytics"    element={<Analytics />} />
+          <Route path="coach"        element={<Coach />} />
+          <Route path="budget"       element={<Budget />} />
+          <Route path="profile"      element={<ProfilePage />} />
+          <Route path="*"            element={<Navigate to="dashboard" replace />} />
         </Routes>
       </main>
       <BottomNav />
@@ -61,7 +51,18 @@ export default function App() {
     <ThemeProvider>
       <AuthProvider>
         <Router>
-          <AppLayout />
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/"         element={<LandingPage />} />
+            <Route path="/login"    element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
+            {/* Protected App Routes */}
+            <Route path="/app/*"    element={<ProtectedApp />} />
+
+            {/* Fallback */}
+            <Route path="*"         element={<Navigate to="/" replace />} />
+          </Routes>
         </Router>
       </AuthProvider>
     </ThemeProvider>
