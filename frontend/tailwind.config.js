@@ -9,14 +9,14 @@ export default {
       },
       colors: {
         brand: {
-          primary:    '#2E7D32',
-          secondary:  '#66BB6A',
-          bg:         '#F1F8E9',
-          accent:     '#FFC107',
-          text:       '#263238',
-          textMuted:  '#546E7A',
-          border:     '#C8E6C9',
-          card:       '#FFFFFF',
+          primary:   '#FF6B6B',
+          secondary: '#4D96FF',
+          bg:        '#FFF7ED',
+          accent:    '#FFD93D',
+          text:      '#2D2D2D',
+          textMuted: '#6B7280',
+          border:    '#FFDCC8',
+          card:      '#FFFFFF',
         }
       },
       animation: {

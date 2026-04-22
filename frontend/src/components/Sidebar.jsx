@@ -25,18 +25,18 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] dark:border-[#1e4a1e] bg-white dark:bg-[#0f0f0f]">
+    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#FFDCC8] dark:border-[#4a1a1a] bg-white dark:bg-[#0f0f0f]">
 
       {/* Logo */}
-      <div className="p-6 border-b border-[#C8E6C9] dark:border-[#1e4a1e]">
+      <div className="p-6 border-b border-[#FFDCC8] dark:border-[#4a1a1a]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-md"
-               style={{ background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' }}>
+               style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
             <TrendingUp size={20} className="text-white" />
           </div>
           <div>
-            <h1 className="text-sm font-bold text-[#263238] dark:text-[#E8F5E9] leading-tight">Akıllı Harçlık</h1>
-            <p className="text-xs font-medium text-[#2E7D32] dark:text-[#66BB6A]">Finans Koçu</p>
+            <h1 className="text-sm font-bold text-[#2D2D2D] dark:text-[#FFF0E4] leading-tight">Akıllı Harçlık</h1>
+            <p className="text-xs font-medium text-[#FF6B6B] dark:text-[#4D96FF]">Finans Koçu</p>
           </div>
         </div>
       </div>
@@ -49,13 +49,13 @@ export default function Sidebar() {
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive
                   ? 'text-white shadow-sm'
-                  : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32] dark:hover:text-[#66BB6A] hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]'
+                  : 'text-[#6B7280] dark:text-[#FFB3B3] hover:text-[#FF6B6B] dark:hover:text-[#4D96FF] hover:bg-[#FFF0E4] dark:hover:bg-[#1a1a1a]'
               }`
             }
-            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' } : {}}>
+            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' } : {}}>
             {({ isActive }) => (
               <>
-                <Icon size={18} className={isActive ? 'text-white' : 'text-[#78909C] dark:text-[#81C784] group-hover:text-[#2E7D32] dark:group-hover:text-[#66BB6A]'} />
+                <Icon size={18} className={isActive ? 'text-white' : 'text-[#9CA3AF] dark:text-[#FF9999] group-hover:text-[#FF6B6B] dark:group-hover:text-[#4D96FF]'} />
                 {label}
                 {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white opacity-70" />}
               </>
@@ -68,35 +68,35 @@ export default function Sidebar() {
       <div className="px-3 pb-2">
         <button onClick={toggle} id="btn-theme-toggle"
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all
-            text-[#546E7A] dark:text-[#A5D6A7] hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]">
+            text-[#6B7280] dark:text-[#FFB3B3] hover:bg-[#FFF0E4] dark:hover:bg-[#1a1a1a]">
           {isDark
-            ? <><Sun size={16} className="text-[#FFC107]" /> Açık Mod</>
-            : <><Moon size={16} className="text-[#546E7A]" /> Koyu Mod</>
+            ? <><Sun size={16} className="text-[#FFD93D]" /> Açık Mod</>
+            : <><Moon size={16} className="text-[#6B7280]" /> Koyu Mod</>
           }
         </button>
       </div>
 
       {/* User Footer */}
-      <div className="p-3 border-t border-[#C8E6C9] dark:border-[#1e4a1e] space-y-1">
+      <div className="p-3 border-t border-[#FFDCC8] dark:border-[#4a1a1a] space-y-1">
         <NavLink to="/profile" id="nav-profile"
           className={({ isActive }) =>
             `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group cursor-pointer ${
-              isActive ? 'bg-[#E8F5E9] dark:bg-[#1a1a1a]' : 'hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]'
+              isActive ? 'bg-[#FFF0E4] dark:bg-[#1a1a1a]' : 'hover:bg-[#FFF0E4] dark:hover:bg-[#1a1a1a]'
             }`
           }>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black text-white flex-shrink-0"
-               style={{ background: `linear-gradient(135deg, ${user?.avatarColor || '#2E7D32'}, ${(user?.avatarColor || '#2E7D32') + '99'})` }}>
+               style={{ background: `linear-gradient(135deg, ${user?.avatarColor || '#FF6B6B'}, ${(user?.avatarColor || '#FF6B6B') + '99'})` }}>
             {initials(user?.displayName)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-[#263238] dark:text-[#E8F5E9] truncate">{user?.displayName || 'Kullanıcı'}</p>
-            <p className="text-xs text-[#78909C] dark:text-[#81C784] truncate">@{user?.username}</p>
+            <p className="text-sm font-semibold text-[#2D2D2D] dark:text-[#FFF0E4] truncate">{user?.displayName || 'Kullanıcı'}</p>
+            <p className="text-xs text-[#9CA3AF] dark:text-[#FF9999] truncate">@{user?.username}</p>
           </div>
-          <Settings size={14} className="text-[#90A4AE] dark:text-[#66BB6A] group-hover:text-[#2E7D32] transition-colors flex-shrink-0" />
+          <Settings size={14} className="text-[#B0B8C4] dark:text-[#4D96FF] group-hover:text-[#FF6B6B] transition-colors flex-shrink-0" />
         </NavLink>
 
         <button id="btn-logout" onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#546E7A] dark:text-[#A5D6A7] hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all text-sm font-medium">
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#6B7280] dark:text-[#FFB3B3] hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all text-sm font-medium">
           <LogOut size={16} />
           Çıkış Yap
         </button>

@@ -4,11 +4,11 @@ import { coachService } from '../services/api'
 const LEVEL_STYLES = {
   danger:  { bg:'bg-red-50 dark:bg-red-900/20',      border:'border-red-200 dark:border-red-800',     title:'text-red-700 dark:text-red-400' },
   warning: { bg:'bg-amber-50 dark:bg-amber-900/20',  border:'border-amber-200 dark:border-amber-800',  title:'text-amber-700 dark:text-amber-400' },
-  success: { bg:'bg-[#E8F5E9] dark:bg-[#1a1a1a]',   border:'border-[#A5D6A7] dark:border-[#2a5a2a]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
+  success: { bg:'bg-[#FFF0E4] dark:bg-[#1a1a1a]',   border:'border-[#FFB3B3] dark:border-[#5a1a1a]',  title:'text-[#FF6B6B] dark:text-[#4D96FF]' },
   info:    { bg:'bg-blue-50 dark:bg-blue-900/20',    border:'border-blue-200 dark:border-blue-800',    title:'text-blue-700 dark:text-blue-400' },
-  tip:     { bg:'bg-[#E8F5E9] dark:bg-[#1a1a1a]',   border:'border-[#C8E6C9] dark:border-[#1e4a1e]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
+  tip:     { bg:'bg-[#FFF0E4] dark:bg-[#1a1a1a]',   border:'border-[#FFDCC8] dark:border-[#4a1a1a]',  title:'text-[#FF6B6B] dark:text-[#4D96FF]' },
 }
-const GRADE_COLOR = { A:'text-[#2E7D32] dark:text-[#66BB6A]', B:'text-blue-600 dark:text-blue-400', C:'text-amber-600 dark:text-amber-400', D:'text-orange-600 dark:text-orange-400', F:'text-red-600 dark:text-red-400' }
+const GRADE_COLOR = { A:'text-[#FF6B6B] dark:text-[#4D96FF]', B:'text-blue-600 dark:text-blue-400', C:'text-amber-600 dark:text-amber-400', D:'text-orange-600 dark:text-orange-400', F:'text-red-600 dark:text-red-400' }
 const fmt = (n) => new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(n)
 
 export default function Coach() {
@@ -25,22 +25,22 @@ export default function Coach() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-full">
-      <div className="w-10 h-10 border-2 border-[#2E7D32] border-t-transparent rounded-full animate-spin" />
+      <div className="w-10 h-10 border-2 border-[#FF6B6B] border-t-transparent rounded-full animate-spin" />
     </div>
   )
 
   const R = 52, C = 2 * Math.PI * R
   const dash = C - (data.score / 100) * C
-  const scoreColor = data.score >= 80 ? '#2E7D32' : data.score >= 60 ? '#66BB6A' : data.score >= 40 ? '#FFC107' : '#ef4444'
-  const trackColor = isDark ? '#1e4a1e' : '#C8E6C9'
-  const scorePanelBg = isDark ? '#1a1a1a' : '#E8F5E9'
-  const scorePanelBorder = isDark ? '#2a5a2a' : '#A5D6A7'
+  const scoreColor = data.score >= 80 ? '#FF6B6B' : data.score >= 60 ? '#4D96FF' : data.score >= 40 ? '#FFD93D' : '#ef4444'
+  const trackColor = isDark ? '#4a1a1a' : '#FFDCC8'
+  const scorePanelBg = isDark ? '#1a1a1a' : '#FFF0E4'
+  const scorePanelBorder = isDark ? '#5a1a1a' : '#FFB3B3'
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-2xl lg:text-3xl font-black text-[#263238] dark:text-[#E8F5E9]">Finans Koçu 🧠</h2>
-        <p className="text-[#546E7A] dark:text-[#A5D6A7] text-xs lg:text-sm mt-1">Kişisel finansal analiz ve tavsiyeler</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-[#2D2D2D] dark:text-[#FFF0E4]">Finans Koçu 🧠</h2>
+        <p className="text-[#6B7280] dark:text-[#FFB3B3] text-xs lg:text-sm mt-1">Kişisel finansal analiz ve tavsiyeler</p>
       </div>
 
       <div className="glass-card p-6" style={{ backgroundColor: scorePanelBg, borderColor: scorePanelBorder }}>
@@ -53,27 +53,27 @@ export default function Coach() {
                 style={{ transform:'rotate(-90deg)', transformOrigin:'50% 50%', transition:'stroke-dashoffset 1.2s ease' }} />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-4xl font-black text-[#263238] dark:text-[#E8F5E9]">{data.score}</span>
-              <span className="text-[#78909C] dark:text-[#81C784] text-xs">/ 100</span>
+              <span className="text-4xl font-black text-[#2D2D2D] dark:text-[#FFF0E4]">{data.score}</span>
+              <span className="text-[#9CA3AF] dark:text-[#FF9999] text-xs">/ 100</span>
             </div>
           </div>
 
           <div className="flex-1 space-y-4 w-full">
             <div className="flex items-center gap-3">
-              <span className="text-[#546E7A] dark:text-[#A5D6A7] text-sm">Finansal Notun:</span>
-              <span className={`text-4xl lg:text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-[#263238] dark:text-[#E8F5E9]'}`}>{data.grade}</span>
+              <span className="text-[#6B7280] dark:text-[#FFB3B3] text-sm">Finansal Notun:</span>
+              <span className={`text-4xl lg:text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-[#2D2D2D] dark:text-[#FFF0E4]'}`}>{data.grade}</span>
             </div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[
-                ['Toplam Gelir',   fmt(data.totalIncome),  'text-[#2E7D32] dark:text-[#66BB6A]'],
+                ['Toplam Gelir',   fmt(data.totalIncome),  'text-[#FF6B6B] dark:text-[#4D96FF]'],
                 ['Toplam Gider',   fmt(data.totalExpenses),'text-red-600 dark:text-red-400'],
                 ['Net Tasarruf',   fmt(data.netSavings),   data.netSavings >= 0 ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'],
-                ['Tasarruf Oranı', `%${data.savingsRate}`, 'text-[#2E7D32] dark:text-[#66BB6A]'],
+                ['Tasarruf Oranı', `%${data.savingsRate}`, 'text-[#FF6B6B] dark:text-[#4D96FF]'],
                 ['Lüks Harcama',   `%${data.luxuryRate}`,  'text-amber-600 dark:text-amber-400'],
-                ['Bütçe Kullanım', `%${data.budgetUsage}`, data.budgetUsage > 90 ? 'text-red-600 dark:text-red-400' : 'text-[#2E7D32] dark:text-[#66BB6A]'],
+                ['Bütçe Kullanım', `%${data.budgetUsage}`, data.budgetUsage > 90 ? 'text-red-600 dark:text-red-400' : 'text-[#FF6B6B] dark:text-[#4D96FF]'],
               ].map(([label, val, color]) => (
                 <div key={label}>
-                  <p className="text-[#78909C] dark:text-[#81C784] text-xs">{label}</p>
+                  <p className="text-[#9CA3AF] dark:text-[#FF9999] text-xs">{label}</p>
                   <p className={`font-bold text-sm ${color}`}>{val}</p>
                 </div>
               ))}
@@ -83,7 +83,7 @@ export default function Coach() {
       </div>
 
       <div className="space-y-3">
-        <h3 className="text-[#263238] dark:text-[#E8F5E9] font-bold text-lg">Koç Tavsiyeleri</h3>
+        <h3 className="text-[#2D2D2D] dark:text-[#FFF0E4] font-bold text-lg">Koç Tavsiyeleri</h3>
         {data.advices.map((a, i) => {
           const s = LEVEL_STYLES[a.level] || LEVEL_STYLES.tip
           return (
@@ -93,7 +93,7 @@ export default function Coach() {
               <span className="text-2xl flex-shrink-0 mt-0.5">{a.icon}</span>
               <div>
                 <p className={`font-bold text-sm ${s.title}`}>{a.title}</p>
-                <p className="text-[#546E7A] dark:text-[#A5D6A7] text-sm mt-0.5 leading-relaxed">{a.message}</p>
+                <p className="text-[#6B7280] dark:text-[#FFB3B3] text-sm mt-0.5 leading-relaxed">{a.message}</p>
               </div>
             </div>
           )

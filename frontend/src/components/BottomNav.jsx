@@ -14,20 +14,20 @@ export default function BottomNav() {
   const { isDark, toggle } = useTheme()
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-[#C8E6C9] dark:border-[#1e4a1e] bg-white dark:bg-[#0f0f0f]">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-[#FFDCC8] dark:border-[#4a1a1a] bg-white dark:bg-[#0f0f0f]">
       <div className="flex items-center justify-around h-16 px-1">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink key={to} to={to} end
             className={({ isActive }) =>
               `flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all min-w-0 flex-1 ${
                 isActive
-                  ? 'text-[#2E7D32] dark:text-[#66BB6A]'
-                  : 'text-[#78909C] dark:text-[#81C784] hover:text-[#2E7D32] dark:hover:text-[#66BB6A]'
+                  ? 'text-[#FF6B6B] dark:text-[#4D96FF]'
+                  : 'text-[#9CA3AF] dark:text-[#FF9999] hover:text-[#FF6B6B] dark:hover:text-[#4D96FF]'
               }`
             }>
             {({ isActive }) => (
               <>
-                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#E8F5E9] dark:bg-[#1a1a1a]' : ''}`}>
+                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#FFF0E4] dark:bg-[#1a1a1a]' : ''}`}>
                   <Icon size={20} />
                 </div>
                 <span className="text-[10px] font-medium truncate">{label}</span>
@@ -38,9 +38,9 @@ export default function BottomNav() {
 
         {/* Theme toggle */}
         <button onClick={toggle}
-          className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all min-w-0 flex-1 text-[#78909C] dark:text-[#A5D6A7]">
+          className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all min-w-0 flex-1 text-[#9CA3AF] dark:text-[#FFB3B3]">
           <div className="p-1.5 rounded-xl">
-            {isDark ? <Sun size={20} className="text-[#FFC107]" /> : <Moon size={20} />}
+            {isDark ? <Sun size={20} className="text-[#FFD93D]" /> : <Moon size={20} />}
           </div>
           <span className="text-[10px] font-medium">{isDark ? 'Açık' : 'Koyu'}</span>
         </button>

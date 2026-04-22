@@ -4,33 +4,33 @@
 
 @layer base {
   html { font-family: 'Inter', sans-serif; }
-  body { @apply bg-[#F1F8E9] dark:bg-[#0a0a0a] text-[#263238] dark:text-[#E8F5E9]; }
+  body { @apply bg-[#FFF7ED] dark:bg-[#0a0a0a] text-[#2D2D2D] dark:text-[#FFF0E4]; }
 
   ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { @apply bg-[#E8F5E9] dark:bg-[#141414]; }
-  ::-webkit-scrollbar-thumb { @apply bg-[#A5D6A7] dark:bg-[#1e4a1e]; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #2E7D32; }
+  ::-webkit-scrollbar-track { @apply bg-[#FFF0E4] dark:bg-[#141414]; }
+  ::-webkit-scrollbar-thumb { @apply bg-[#FFB3B3] dark:bg-[#4a1a1a]; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #FF6B6B; }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-2xl shadow-sm;
+    @apply bg-white dark:bg-[#141414] border border-[#FFDCC8] dark:border-[#4a1a1a] rounded-2xl shadow-sm;
   }
   .stat-card {
-    @apply glass-card p-5 transition-all duration-300 hover:border-[#66BB6A] dark:hover:border-[#2a5a2a] hover:shadow-md hover:-translate-y-0.5;
+    @apply glass-card p-5 transition-all duration-300 hover:border-[#4D96FF] dark:hover:border-[#5a1a1a] hover:shadow-md hover:-translate-y-0.5;
   }
   .btn-primary {
     @apply text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 shadow-md text-sm flex items-center gap-2;
-    background: linear-gradient(135deg, #2E7D32, #66BB6A);
+    background: linear-gradient(135deg, #FF6B6B, #4D96FF);
   }
   .btn-primary:hover {
-    background: linear-gradient(135deg, #1B5E20, #43A047);
+    background: linear-gradient(135deg, #CC4444, #3A78D4);
     @apply shadow-lg;
   }
   .input-field {
-    @apply w-full bg-[#F1F8E9] dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] text-[#263238] dark:text-[#E8F5E9] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#2E7D32] focus:ring-1 placeholder-[#90A4AE] dark:placeholder-[#2a5a2a] transition-all;
+    @apply w-full bg-[#FFF7ED] dark:bg-[#141414] border border-[#FFDCC8] dark:border-[#4a1a1a] text-[#2D2D2D] dark:text-[#FFF0E4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#FF6B6B] focus:ring-1 placeholder-[#B0B8C4] dark:placeholder-[#5a1a1a] transition-all;
   }
   .page-header  { @apply mb-6; }
-  .page-title   { @apply text-2xl font-bold text-[#263238] dark:text-[#E8F5E9]; }
-  .page-subtitle{ @apply text-[#546E7A] dark:text-[#A5D6A7] text-sm mt-1; }
+  .page-title   { @apply text-2xl font-bold text-[#2D2D2D] dark:text-[#FFF0E4]; }
+  .page-subtitle{ @apply text-[#6B7280] dark:text-[#FFB3B3] text-sm mt-1; }
 }
