@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Chart as ChartJS, CategoryScale, LinearScale, BarElement,
   LineElement, PointElement, ArcElement, Title, Tooltip, Legend, Filler
@@ -24,8 +24,8 @@ const chartDark = {
   responsive: true, maintainAspectRatio: false,
   plugins: { legend: { labels: { color: '#A5D6A7', font: { family: 'Inter', size: 12 }, padding: 16 } } },
   scales: {
-    x: { grid: { color: '#1f3a1f', drawBorder: false }, ticks: { color: '#81C784' } },
-    y: { grid: { color: '#1f3a1f', drawBorder: false }, ticks: { color: '#81C784' } },
+    x: { grid: { color: '#1a1a1a', drawBorder: false }, ticks: { color: '#81C784' } },
+    y: { grid: { color: '#1a1a1a', drawBorder: false }, ticks: { color: '#81C784' } },
   }
 }
 
@@ -79,7 +79,7 @@ export default function Analytics() {
           <h3 className="text-[#263238] dark:text-[#E8F5E9] font-bold mb-4">Kategori Dağılımı</h3>
           <div className="h-48 lg:h-56 flex items-center justify-center">
             {cats.length === 0
-              ? <p className="text-[#90A4AE] dark:text-[#4a7a4a]">Henüz harcama verisi yok</p>
+              ? <p className="text-[#90A4AE] dark:text-[#2a5a2a]">Henüz harcama verisi yok</p>
               : <Doughnut data={donutData} options={{ responsive: true, maintainAspectRatio: false, cutout: '65%',
                   plugins: { legend: { position: 'bottom', labels: { color: isDark ? '#A5D6A7' : '#546E7A', font: { size: 10 }, padding: 8 } } } }} />
             }
@@ -98,9 +98,9 @@ export default function Analytics() {
                       <span className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                       {cat.name}
                     </span>
-                    <span className="text-[#263238] dark:text-[#E8F5E9]">{fmt(cat.amount)} <span className="text-[#90A4AE] dark:text-[#4a7a4a]">%{pct.toFixed(0)}</span></span>
+                    <span className="text-[#263238] dark:text-[#E8F5E9]">{fmt(cat.amount)} <span className="text-[#90A4AE] dark:text-[#2a5a2a]">%{pct.toFixed(0)}</span></span>
                   </div>
-                  <div className="h-1.5 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full border border-[#C8E6C9] dark:border-[#2d4a2d]">
+                  <div className="h-1.5 bg-[#E8F5E9] dark:bg-[#1a1a1a] rounded-full border border-[#C8E6C9] dark:border-[#1e4a1e]">
                     <div className="h-full rounded-full transition-all duration-700"
                          style={{ width: `${pct}%`, backgroundColor: COLORS[i % COLORS.length] }} />
                   </div>

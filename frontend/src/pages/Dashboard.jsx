@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Plus, TrendingUp, TrendingDown, DollarSign, PiggyBank, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { reportService, budgetService, transactionService } from '../services/api'
@@ -55,7 +55,7 @@ export default function Dashboard() {
     { id: 'stat-balance',  title: 'Net Bakiye',     val: fmt((summary?.totalIncome || 0) - (summary?.totalExpenses || 0)),
       Icon: DollarSign,   cls: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800', icon: 'text-blue-600 dark:text-blue-400' },
     { id: 'stat-savings',  title: 'Tasarruf Oranı', val: `%${savings.toFixed(1)}`,
-      Icon: PiggyBank,    cls: 'bg-[#E8F5E9] dark:bg-[#1f3a1f] border-[#A5D6A7] dark:border-[#3d6a3d]', icon: 'text-[#2E7D32] dark:text-[#66BB6A]' },
+      Icon: PiggyBank,    cls: 'bg-[#E8F5E9] dark:bg-[#1a1a1a] border-[#A5D6A7] dark:border-[#2a5a2a]', icon: 'text-[#2E7D32] dark:text-[#66BB6A]' },
   ]
 
   return (
@@ -97,7 +97,7 @@ export default function Dashboard() {
             <p className="text-[#78909C] dark:text-[#81C784] text-xs">kullanıldı</p>
           </div>
         </div>
-        <div className="h-3 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full overflow-hidden border border-[#C8E6C9] dark:border-[#2d4a2d]">
+        <div className="h-3 bg-[#E8F5E9] dark:bg-[#1a1a1a] rounded-full overflow-hidden border border-[#C8E6C9] dark:border-[#1e4a1e]">
           <div className={`h-full ${pctBg} rounded-full transition-all duration-1000`}
                style={{ width: `${Math.min(100, pct)}%` }} />
         </div>
@@ -117,9 +117,9 @@ export default function Dashboard() {
         </div>
         <div className="space-y-1">
           {txs.length === 0 ? (
-            <p className="text-[#90A4AE] dark:text-[#4a7a4a] text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
+            <p className="text-[#90A4AE] dark:text-[#2a5a2a] text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
           ) : txs.map(tx => (
-            <div key={tx.id} className="flex items-center justify-between py-2.5 border-b border-[#E8F5E9] dark:border-[#1f3a1f] last:border-0 hover:bg-[#F9FBF5] dark:hover:bg-[#1f3a1f] rounded-lg px-2 -mx-2 transition-colors">
+            <div key={tx.id} className="flex items-center justify-between py-2.5 border-b border-[#E8F5E9] dark:border-[#1a1a1a] last:border-0 hover:bg-[#F9FBF5] dark:hover:bg-[#1a1a1a] rounded-lg px-2 -mx-2 transition-colors">
               <div className="flex items-center gap-3">
                 <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base flex-shrink-0 ${
                   tx.type === 'income' ? 'bg-emerald-100 dark:bg-emerald-900/30' : tx.subtype === 'luxury' ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-red-100 dark:bg-red-900/30'

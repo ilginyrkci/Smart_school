@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Edit3, Check, X } from 'lucide-react'
 import { budgetService } from '../services/api'
 
@@ -47,7 +47,7 @@ export default function Budget() {
     ? { msg: '🚨 Bütçenizin sonuna yaklaştınız! Harcamaları acil azaltın.', cls: 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400' }
     : pct >= 75
     ? { msg: '⚠️ Bütçenizin büyük kısmını kullandınız. Dikkatli devam edin.', cls: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400' }
-    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#E8F5E9] dark:bg-[#1f3a1f] border-[#A5D6A7] dark:border-[#3d6a3d] text-[#2E7D32] dark:text-[#66BB6A]' }
+    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#E8F5E9] dark:bg-[#1a1a1a] border-[#A5D6A7] dark:border-[#2a5a2a] text-[#2E7D32] dark:text-[#66BB6A]' }
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
@@ -66,15 +66,15 @@ export default function Budget() {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#546E7A] dark:text-[#A5D6A7] text-sm">₺</span>
                   <input id="input-budget-limit" type="number" value={newLimit}
                     onChange={e => setNewLimit(e.target.value)}
-                    className="bg-[#F1F8E9] dark:bg-[#1a2e1a] border border-[#2E7D32] text-[#263238] dark:text-[#E8F5E9] rounded-xl pl-8 pr-4 py-2 text-xl font-bold w-44 focus:outline-none"
+                    className="bg-[#F1F8E9] dark:bg-[#141414] border border-[#2E7D32] text-[#263238] dark:text-[#E8F5E9] rounded-xl pl-8 pr-4 py-2 text-xl font-bold w-44 focus:outline-none"
                     autoFocus />
                 </div>
                 <button id="btn-save-budget" onClick={handleSave} disabled={saving}
-                  className="p-2.5 text-[#2E7D32] bg-[#E8F5E9] dark:bg-[#1f3a1f] border border-[#A5D6A7] dark:border-[#3d6a3d] rounded-xl hover:bg-[#C8E6C9] dark:hover:bg-[#2d4a2d] transition-all">
+                  className="p-2.5 text-[#2E7D32] bg-[#E8F5E9] dark:bg-[#1a1a1a] border border-[#A5D6A7] dark:border-[#2a5a2a] rounded-xl hover:bg-[#C8E6C9] dark:hover:bg-[#1e4a1e] transition-all">
                   <Check size={16} />
                 </button>
                 <button id="btn-cancel-budget" onClick={() => setEditing(false)}
-                  className="p-2.5 text-[#546E7A] dark:text-[#A5D6A7] bg-[#F1F8E9] dark:bg-[#1a2e1a] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-xl hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f] transition-all">
+                  className="p-2.5 text-[#546E7A] dark:text-[#A5D6A7] bg-[#F1F8E9] dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-xl hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a] transition-all">
                   <X size={16} />
                 </button>
               </div>
@@ -82,7 +82,7 @@ export default function Budget() {
               <div className="flex items-center gap-3 mt-1">
                 <p className="text-3xl font-black text-[#263238] dark:text-[#E8F5E9]">{fmt(budget.monthlyLimit)}</p>
                 <button id="btn-edit-budget" onClick={() => setEditing(true)}
-                  className="p-1.5 text-[#78909C] dark:text-[#81C784] hover:text-[#2E7D32] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f] rounded-lg transition-all">
+                  className="p-1.5 text-[#78909C] dark:text-[#81C784] hover:text-[#2E7D32] hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a] rounded-lg transition-all">
                   <Edit3 size={14} />
                 </button>
               </div>
@@ -94,7 +94,7 @@ export default function Budget() {
           </div>
         </div>
 
-        <div className="h-5 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full overflow-hidden mb-2 border border-[#C8E6C9] dark:border-[#2d4a2d]">
+        <div className="h-5 bg-[#E8F5E9] dark:bg-[#1a1a1a] rounded-full overflow-hidden mb-2 border border-[#C8E6C9] dark:border-[#1e4a1e]">
           <div className={`h-full ${pctBg} rounded-full transition-all duration-1000`} style={{ width: `${Math.min(100, pct)}%` }} />
         </div>
         <div className="flex justify-between text-sm">
@@ -112,7 +112,7 @@ export default function Budget() {
             </div>
             <p className="text-2xl font-black text-[#263238] dark:text-[#E8F5E9] mb-1">{fmt(seg.amount)}</p>
             <p className="text-[#78909C] dark:text-[#81C784] text-xs mb-3">Bütçenin %{seg.pct.toFixed(0)}'i</p>
-            <div className="h-2 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full border border-[#C8E6C9] dark:border-[#2d4a2d]">
+            <div className="h-2 bg-[#E8F5E9] dark:bg-[#1a1a1a] rounded-full border border-[#C8E6C9] dark:border-[#1e4a1e]">
               <div className="h-full rounded-full transition-all duration-700" style={{ width: `${seg.pct}%`, backgroundColor: seg.color }} />
             </div>
           </div>

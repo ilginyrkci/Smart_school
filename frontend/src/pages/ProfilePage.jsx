@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { User, Mail, Lock, Save, Eye, EyeOff, ArrowLeft, Palette, CheckCircle, AlertCircle, AtSign } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
@@ -118,7 +118,7 @@ export default function Profile() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-[#F1F8E9] dark:bg-[#0d1a0d] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-xl p-1 flex-wrap">
+      <div className="flex gap-1 bg-[#F1F8E9] dark:bg-[#0a0a0a] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-xl p-1 flex-wrap">
         {[
           ['profile',  '👤 Profil'],
           ['username', '🔤 Kullanıcı Adı'],
@@ -154,7 +154,7 @@ export default function Profile() {
           <div>
             <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
             <div className="relative">
-              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
               <input id="input-profile-name" type="text" value={profileForm.displayName}
                 onChange={e => setProfileForm(p => ({ ...p, displayName: e.target.value }))}
                 placeholder="Adınız Soyadınız" className="input-field pl-10" />
@@ -164,7 +164,7 @@ export default function Profile() {
           <div>
             <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
             <div className="relative">
-              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
               <input id="input-profile-email" type="email" value={profileForm.email}
                 onChange={e => setProfileForm(p => ({ ...p, email: e.target.value }))}
                 placeholder="email@example.com" className="input-field pl-10" />
@@ -180,7 +180,7 @@ export default function Profile() {
                 <button key={val} type="button" title={label}
                   onClick={() => setProfileForm(p => ({ ...p, avatarColor: val }))}
                   className={`w-9 h-9 rounded-xl transition-all hover:scale-110 ${
-                    profileForm.avatarColor === val ? 'ring-2 ring-[#2E7D32] dark:ring-[#66BB6A] ring-offset-2 ring-offset-white dark:ring-offset-[#1a2e1a] scale-110' : ''
+                    profileForm.avatarColor === val ? 'ring-2 ring-[#2E7D32] dark:ring-[#66BB6A] ring-offset-2 ring-offset-white dark:ring-offset-[#141414] scale-110' : ''
                   }`}
                   style={{ background: `linear-gradient(135deg, ${val}, ${val}88)` }} />
               ))}
@@ -199,7 +199,7 @@ export default function Profile() {
       {/* ─── Tab: Kullanıcı Adı ─── */}
       {tab === 'username' && (
         <form onSubmit={handleUsernameChange} className="glass-card p-6 space-y-5">
-          <div className="p-4 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-2xl border border-[#C8E6C9] dark:border-[#2d4a2d]">
+          <div className="p-4 bg-[#E8F5E9] dark:bg-[#1a1a1a] rounded-2xl border border-[#C8E6C9] dark:border-[#1e4a1e]">
             <p className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1">Mevcut Kullanıcı Adı</p>
             <p className="text-[#263238] dark:text-[#E8F5E9] font-bold text-lg">@{user?.username}</p>
           </div>
@@ -213,7 +213,7 @@ export default function Profile() {
           <div>
             <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Yeni Kullanıcı Adı</label>
             <div className="relative">
-              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
               <input id="input-new-username" type="text" value={newUsername}
                 onChange={e => setNewUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                 placeholder="yeni_kullanici_adi" className="input-field pl-10 font-mono" maxLength={30} />
@@ -247,12 +247,12 @@ export default function Profile() {
             <div key={key}>
               <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
                 <input id={id} type={show ? 'text' : 'password'} value={passForm[key]}
                   onChange={e => setPassForm(p => ({ ...p, [key]: e.target.value }))}
                   placeholder="••••••" className="input-field pl-10 pr-10" required />
                 <button type="button" onClick={toggle}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a] hover:text-[#546E7A] transition-colors">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a] hover:text-[#546E7A] transition-colors">
                   {show ? <EyeOff size={14} /> : <Eye size={14} />}
                 </button>
               </div>

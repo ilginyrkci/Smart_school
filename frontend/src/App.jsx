@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+﻿import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import Sidebar    from './components/Sidebar'
@@ -15,7 +15,7 @@ function AppLayout() {
   const { user, loading } = useAuth()
 
   if (loading) return (
-    <div className="flex items-center justify-center h-screen bg-[#F1F8E9] dark:bg-[#0d1a0d]">
+    <div className="flex items-center justify-center h-screen bg-[#F1F8E9] dark:bg-[#0a0a0a]">
       <div className="text-center">
         <div className="w-14 h-14 border-2 border-[#2E7D32] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
         <p className="text-[#546E7A] dark:text-[#A5D6A7] text-sm">Yükleniyor...</p>
@@ -26,9 +26,9 @@ function AppLayout() {
   if (!user) return <LoginPage />
 
   return (
-    <div className="flex h-screen bg-[#F1F8E9] dark:bg-[#0d1a0d] overflow-hidden">
+    <div className="flex h-screen bg-[#F1F8E9] dark:bg-[#0a0a0a] overflow-hidden">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0 bg-[#F1F8E9] dark:bg-[#0d1a0d]">
+      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0 bg-[#F1F8E9] dark:bg-[#0a0a0a]">
         <Routes>
           <Route path="/"             element={<Dashboard />} />
           <Route path="/transactions" element={<Transactions />} />

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+﻿import { NavLink, useNavigate } from 'react-router-dom'
 import { LayoutDashboard, ArrowLeftRight, BarChart3, Brain, Wallet, TrendingUp, LogOut, Settings, Sun, Moon } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
@@ -25,10 +25,10 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] dark:border-[#2d4a2d] bg-white dark:bg-[#152015]">
+    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] dark:border-[#1e4a1e] bg-white dark:bg-[#0f0f0f]">
 
       {/* Logo */}
-      <div className="p-6 border-b border-[#C8E6C9] dark:border-[#2d4a2d]">
+      <div className="p-6 border-b border-[#C8E6C9] dark:border-[#1e4a1e]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-md"
                style={{ background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' }}>
@@ -49,7 +49,7 @@ export default function Sidebar() {
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive
                   ? 'text-white shadow-sm'
-                  : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32] dark:hover:text-[#66BB6A] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]'
+                  : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32] dark:hover:text-[#66BB6A] hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]'
               }`
             }
             style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' } : {}}>
@@ -68,7 +68,7 @@ export default function Sidebar() {
       <div className="px-3 pb-2">
         <button onClick={toggle} id="btn-theme-toggle"
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all
-            text-[#546E7A] dark:text-[#A5D6A7] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]">
+            text-[#546E7A] dark:text-[#A5D6A7] hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]">
           {isDark
             ? <><Sun size={16} className="text-[#FFC107]" /> Açık Mod</>
             : <><Moon size={16} className="text-[#546E7A]" /> Koyu Mod</>
@@ -77,11 +77,11 @@ export default function Sidebar() {
       </div>
 
       {/* User Footer */}
-      <div className="p-3 border-t border-[#C8E6C9] dark:border-[#2d4a2d] space-y-1">
+      <div className="p-3 border-t border-[#C8E6C9] dark:border-[#1e4a1e] space-y-1">
         <NavLink to="/profile" id="nav-profile"
           className={({ isActive }) =>
             `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group cursor-pointer ${
-              isActive ? 'bg-[#E8F5E9] dark:bg-[#1f3a1f]' : 'hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]'
+              isActive ? 'bg-[#E8F5E9] dark:bg-[#1a1a1a]' : 'hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]'
             }`
           }>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black text-white flex-shrink-0"

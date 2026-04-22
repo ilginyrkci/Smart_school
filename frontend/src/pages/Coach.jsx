@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { coachService } from '../services/api'
 
 const LEVEL_STYLES = {
   danger:  { bg:'bg-red-50 dark:bg-red-900/20',      border:'border-red-200 dark:border-red-800',     title:'text-red-700 dark:text-red-400' },
   warning: { bg:'bg-amber-50 dark:bg-amber-900/20',  border:'border-amber-200 dark:border-amber-800',  title:'text-amber-700 dark:text-amber-400' },
-  success: { bg:'bg-[#E8F5E9] dark:bg-[#1f3a1f]',   border:'border-[#A5D6A7] dark:border-[#3d6a3d]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
+  success: { bg:'bg-[#E8F5E9] dark:bg-[#1a1a1a]',   border:'border-[#A5D6A7] dark:border-[#2a5a2a]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
   info:    { bg:'bg-blue-50 dark:bg-blue-900/20',    border:'border-blue-200 dark:border-blue-800',    title:'text-blue-700 dark:text-blue-400' },
-  tip:     { bg:'bg-[#E8F5E9] dark:bg-[#1f3a1f]',   border:'border-[#C8E6C9] dark:border-[#2d4a2d]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
+  tip:     { bg:'bg-[#E8F5E9] dark:bg-[#1a1a1a]',   border:'border-[#C8E6C9] dark:border-[#1e4a1e]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
 }
 const GRADE_COLOR = { A:'text-[#2E7D32] dark:text-[#66BB6A]', B:'text-blue-600 dark:text-blue-400', C:'text-amber-600 dark:text-amber-400', D:'text-orange-600 dark:text-orange-400', F:'text-red-600 dark:text-red-400' }
 const fmt = (n) => new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(n)
@@ -32,9 +32,9 @@ export default function Coach() {
   const R = 52, C = 2 * Math.PI * R
   const dash = C - (data.score / 100) * C
   const scoreColor = data.score >= 80 ? '#2E7D32' : data.score >= 60 ? '#66BB6A' : data.score >= 40 ? '#FFC107' : '#ef4444'
-  const trackColor = isDark ? '#2d4a2d' : '#C8E6C9'
-  const scorePanelBg = isDark ? '#1f3a1f' : '#E8F5E9'
-  const scorePanelBorder = isDark ? '#3d6a3d' : '#A5D6A7'
+  const trackColor = isDark ? '#1e4a1e' : '#C8E6C9'
+  const scorePanelBg = isDark ? '#1a1a1a' : '#E8F5E9'
+  const scorePanelBorder = isDark ? '#2a5a2a' : '#A5D6A7'
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">

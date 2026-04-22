@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+﻿import { NavLink } from 'react-router-dom'
 import { LayoutDashboard, ArrowLeftRight, BarChart3, Brain, Wallet, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
@@ -14,7 +14,7 @@ export default function BottomNav() {
   const { isDark, toggle } = useTheme()
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-[#C8E6C9] dark:border-[#2d4a2d] bg-white dark:bg-[#152015]">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-[#C8E6C9] dark:border-[#1e4a1e] bg-white dark:bg-[#0f0f0f]">
       <div className="flex items-center justify-around h-16 px-1">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink key={to} to={to} end
@@ -27,7 +27,7 @@ export default function BottomNav() {
             }>
             {({ isActive }) => (
               <>
-                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#E8F5E9] dark:bg-[#1f3a1f]' : ''}`}>
+                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#E8F5E9] dark:bg-[#1a1a1a]' : ''}`}>
                   <Icon size={20} />
                 </div>
                 <span className="text-[10px] font-medium truncate">{label}</span>

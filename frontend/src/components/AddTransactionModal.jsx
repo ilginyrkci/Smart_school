@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { X, ArrowUpCircle, ArrowDownCircle } from 'lucide-react'
 import { transactionService } from '../services/api'
 
@@ -38,20 +38,20 @@ export default function AddTransactionModal({ onClose, onSuccess, editTx = null 
 
   return (
     <div className="fixed inset-0 bg-[#263238]/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-      <div className="bg-white dark:bg-[#1a2e1a] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-2xl w-full max-w-md shadow-2xl animate-slide-up">
+      <div className="bg-white dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-2xl w-full max-w-md shadow-2xl animate-slide-up">
 
-        <div className="flex items-center justify-between p-6 border-b border-[#E8F5E9] dark:border-[#2d4a2d]">
+        <div className="flex items-center justify-between p-6 border-b border-[#E8F5E9] dark:border-[#1e4a1e]">
           <h3 className="text-lg font-bold text-[#263238] dark:text-[#E8F5E9]">
             {isEdit ? '✏️ İşlemi Düzenle' : 'Yeni İşlem Ekle'}
           </h3>
           <button onClick={onClose} id="modal-close"
-            className="text-[#78909C] dark:text-[#81C784] hover:text-[#263238] dark:hover:text-[#E8F5E9] p-1.5 rounded-lg hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f] transition-all">
+            className="text-[#78909C] dark:text-[#81C784] hover:text-[#263238] dark:hover:text-[#E8F5E9] p-1.5 rounded-lg hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a] transition-all">
             <X size={18} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <div className="flex gap-2 bg-[#F1F8E9] dark:bg-[#0d1a0d] rounded-xl p-1 border border-[#C8E6C9] dark:border-[#2d4a2d]">
+          <div className="flex gap-2 bg-[#F1F8E9] dark:bg-[#0a0a0a] rounded-xl p-1 border border-[#C8E6C9] dark:border-[#1e4a1e]">
             <button type="button" id="type-income" onClick={() => handleTypeChange('income')}
               className={`flex-1 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
                 form.type === 'income' ? 'bg-[#2E7D32] text-white shadow-md' : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32]'
@@ -83,7 +83,7 @@ export default function AddTransactionModal({ onClose, onSuccess, editTx = null 
                 ].map(({ val, label, active }) => (
                   <button key={val} type="button" id={`subtype-${val}`} onClick={() => set('subtype', val)}
                     className={`flex-1 py-2 rounded-xl text-xs font-semibold border transition-all ${
-                      form.subtype === val ? active : 'border-[#C8E6C9] dark:border-[#2d4a2d] text-[#78909C] dark:text-[#81C784] hover:border-[#A5D6A7] dark:hover:border-[#3d6a3d]'
+                      form.subtype === val ? active : 'border-[#C8E6C9] dark:border-[#1e4a1e] text-[#78909C] dark:text-[#81C784] hover:border-[#A5D6A7] dark:hover:border-[#2a5a2a]'
                     }`}>
                     {label}
                   </button>

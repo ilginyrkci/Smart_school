@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { TrendingUp, Eye, EyeOff, User, Lock, UserPlus, LogIn, ArrowRight } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
@@ -35,7 +35,7 @@ export default function LoginPage() {
   }
 
   const bgStyle = isDark
-    ? { background: 'linear-gradient(135deg, #0d1a0d 0%, #152015 60%, #1a2e1a 100%)' }
+    ? { background: 'linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 60%, #141414 100%)' }
     : { background: 'linear-gradient(135deg, #F1F8E9 0%, #E8F5E9 60%, #C8E6C9 100%)' }
 
   return (
@@ -72,7 +72,7 @@ export default function LoginPage() {
             { icon: '🧠', title: 'Finans Koçu', desc: 'Yapay zeka destekli finansal tavsiyeler' },
             { icon: '💰', title: 'Bütçe Takibi', desc: 'Aylık limitinizi belirleyin ve takip edin' },
           ].map(({ icon, title, desc }) => (
-            <div key={title} className="flex items-center gap-4 p-3 rounded-xl bg-white/60 dark:bg-[#1a2e1a]/60 border border-[#C8E6C9] dark:border-[#2d4a2d]">
+            <div key={title} className="flex items-center gap-4 p-3 rounded-xl bg-white/60 dark:bg-[#141414]/60 border border-[#C8E6C9] dark:border-[#1e4a1e]">
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="text-[#263238] dark:text-[#E8F5E9] text-sm font-semibold">{title}</p>
@@ -96,9 +96,9 @@ export default function LoginPage() {
             <span className="text-[#263238] dark:text-[#E8F5E9] font-bold text-lg">Akıllı Harçlık</span>
           </div>
 
-          <div className="bg-white dark:bg-[#1a2e1a] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-3xl p-8 shadow-lg">
+          <div className="bg-white dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-3xl p-8 shadow-lg">
             {/* Tabs */}
-            <div className="flex bg-[#F1F8E9] dark:bg-[#0d1a0d] rounded-2xl p-1 mb-8 border border-[#C8E6C9] dark:border-[#2d4a2d]">
+            <div className="flex bg-[#F1F8E9] dark:bg-[#0a0a0a] rounded-2xl p-1 mb-8 border border-[#C8E6C9] dark:border-[#1e4a1e]">
               {[
                 { val: 'login', label: 'Giriş Yap', Icon: LogIn },
                 { val: 'register', label: 'Kayıt Ol', Icon: UserPlus },
@@ -118,7 +118,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
                   <div className="relative">
-                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
                     <input id="input-displayName" type="text" value={form.displayName}
                       onChange={e => set('displayName', e.target.value)}
                       placeholder="Adınız Soyadınız" className="input-field pl-10" />
@@ -129,7 +129,7 @@ export default function LoginPage() {
               <div>
                 <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Kullanıcı Adı</label>
                 <div className="relative">
-                  <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                  <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
                   <input id="input-username" type="text" value={form.username}
                     onChange={e => set('username', e.target.value)}
                     placeholder="kullanici_adi" className="input-field pl-10" required />
@@ -139,12 +139,12 @@ export default function LoginPage() {
               <div>
                 <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre</label>
                 <div className="relative">
-                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
                   <input id="input-password" type={showPass ? 'text' : 'password'} value={form.password}
                     onChange={e => set('password', e.target.value)}
                     placeholder="••••••" className="input-field pl-10 pr-10" required />
                   <button type="button" onClick={() => setShowPass(!showPass)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a] hover:text-[#546E7A] transition-colors">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a] hover:text-[#546E7A] transition-colors">
                     {showPass ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
                 </div>
@@ -154,7 +154,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre Tekrar</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
                     <input id="input-confirmPass" type={showPass ? 'text' : 'password'} value={form.confirmPass}
                       onChange={e => set('confirmPass', e.target.value)}
                       placeholder="••••••" className="input-field pl-10" required />

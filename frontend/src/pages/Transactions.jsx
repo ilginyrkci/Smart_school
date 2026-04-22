@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Trash2, Plus, Search, Pencil } from 'lucide-react'
 import { transactionService } from '../services/api'
 import AddTransactionModal from '../components/AddTransactionModal'
@@ -51,7 +51,7 @@ export default function Transactions() {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <div className="flex gap-1 bg-white dark:bg-[#1a2e1a] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-xl p-1">
+        <div className="flex gap-1 bg-white dark:bg-[#141414] border border-[#C8E6C9] dark:border-[#1e4a1e] rounded-xl p-1">
           {[['all','Tümü'],['income','↑ Gelir'],['expense','↓ Gider']].map(([val, label]) => (
             <button key={val} id={`filter-${val}`} onClick={() => setFilter(val)}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
@@ -63,7 +63,7 @@ export default function Transactions() {
           ))}
         </div>
         <div className="flex-1 min-w-48 relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#2a5a2a]" />
           <input type="text" value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Ara..." className="input-field pl-9" />
         </div>
@@ -80,10 +80,10 @@ export default function Transactions() {
             <p className="text-[#78909C] dark:text-[#81C784] text-sm">Hiç işlem bulunamadı</p>
           </div>
         ) : (
-          <div className="divide-y divide-[#E8F5E9] dark:divide-[#1f3a1f]">
+          <div className="divide-y divide-[#E8F5E9] dark:divide-[#1a1a1a]">
             {filtered.map(tx => (
               <div key={tx.id} id={`tx-${tx.id}`}
-                className="flex items-center justify-between px-4 py-3 hover:bg-[#F9FBF5] dark:hover:bg-[#1f3a1f] transition-colors group">
+                className="flex items-center justify-between px-4 py-3 hover:bg-[#F9FBF5] dark:hover:bg-[#1a1a1a] transition-colors group">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className={`w-9 h-9 lg:w-11 lg:h-11 rounded-xl lg:rounded-2xl flex items-center justify-center text-base lg:text-lg flex-shrink-0 ${
                     tx.type === 'income' ? 'bg-emerald-100 dark:bg-emerald-900/30' : tx.subtype === 'luxury' ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-red-100 dark:bg-red-900/30'
@@ -112,7 +112,7 @@ export default function Transactions() {
                     {tx.type === 'income' ? '+' : '-'}{fmt(tx.amount)}
                   </span>
                   <button onClick={() => setEditTx(tx)} id={`edit-tx-${tx.id}`}
-                    className="opacity-0 group-hover:opacity-100 text-[#90A4AE] hover:text-[#2E7D32] transition-all p-1.5 rounded-lg hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]">
+                    className="opacity-0 group-hover:opacity-100 text-[#90A4AE] hover:text-[#2E7D32] transition-all p-1.5 rounded-lg hover:bg-[#E8F5E9] dark:hover:bg-[#1a1a1a]">
                     <Pencil size={14} />
                   </button>
                   <button onClick={() => handleDelete(tx.id)} id={`delete-tx-${tx.id}`}
