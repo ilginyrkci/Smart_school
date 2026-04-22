@@ -126,6 +126,7 @@ export default function Transactions() {
                     <Trash2 size={14} />
                   </button>
                 </div>
+              </div>
             ))}
           </div>
         )}
