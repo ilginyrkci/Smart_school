@@ -4,7 +4,7 @@ import { coachService } from '../services/api'
 const LEVEL_STYLES = {
   danger:  { bg:'bg-red-50 dark:bg-red-900/20',      border:'border-red-200 dark:border-red-800',     title:'text-red-700 dark:text-red-400' },
   warning: { bg:'bg-amber-50 dark:bg-amber-900/20',  border:'border-amber-200 dark:border-amber-800',  title:'text-amber-700 dark:text-amber-400' },
-  success: { bg:'bg-[#EEF2FF] dark:bg-[#1a1a1a]',   border:'border-[#A5B4FC] dark:border-[#251a5a]',  title:'text-[#4F46E5] dark:text-[#A5B4FC]' },
+  success: { bg:'bg-[#EEF2FF] dark:bg-[#1a1a1a]',   border:'border-[#A5B4FC] dark:border-[#1e1a4a]',  title:'text-[#4F46E5] dark:text-[#A5B4FC]' },
   info:    { bg:'bg-blue-50 dark:bg-blue-900/20',    border:'border-blue-200 dark:border-blue-800',    title:'text-blue-700 dark:text-blue-400' },
   tip:     { bg:'bg-[#EEF2FF] dark:bg-[#1a1a1a]',   border:'border-[#C7D2FE] dark:border-[#1a1a4a]',  title:'text-[#4F46E5] dark:text-[#A5B4FC]' },
 }
@@ -34,7 +34,7 @@ export default function Coach() {
   const scoreColor = data.score >= 80 ? '#4F46E5' : data.score >= 60 ? '#A5B4FC' : data.score >= 40 ? '#22C55E' : '#ef4444'
   const trackColor = isDark ? '#1a1a4a' : '#C7D2FE'
   const scorePanelBg = isDark ? '#1a1a1a' : '#EEF2FF'
-  const scorePanelBorder = isDark ? '#251a5a' : '#A5B4FC'
+  const scorePanelBorder = isDark ? '#1e1a4a' : '#A5B4FC'
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">

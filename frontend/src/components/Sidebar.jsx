@@ -49,7 +49,7 @@ export default function Sidebar() {
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive
                   ? 'text-white shadow-sm'
-                  : 'text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a]'
+                  : 'text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14]'
               }`
             }
             style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #4F46E5, #A5B4FC)' } : {}}>
@@ -80,7 +80,7 @@ export default function Sidebar() {
         <NavLink to="/app/profile" id="nav-profile"
           className={({ isActive }) =>
             `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group cursor-pointer ${
-              isActive ? 'bg-[#EEF2FF] dark:bg-[#0f0f1a]' : 'hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a]'
+              isActive ? 'bg-[#EEF2FF] dark:bg-[#0f0f14]' : 'hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14]'
             }`
           }>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black text-white flex-shrink-0"
@@ -91,7 +91,7 @@ export default function Sidebar() {
             <p className="text-sm font-semibold text-[#111827] dark:text-[#EEF2FF] truncate">{user?.displayName || 'Kullanıcı'}</p>
             <p className="text-xs text-[#9CA3AF] dark:text-[#818CF8] truncate">@{user?.username}</p>
           </div>
-          <Settings size={14} className="text-[#B0B8C4] dark:text-[#251a5a] group-hover:text-[#4F46E5] transition-colors flex-shrink-0" />
+          <Settings size={14} className="text-[#B0B8C4] dark:text-[#1e1a4a] group-hover:text-[#4F46E5] transition-colors flex-shrink-0" />
         </NavLink>
 
         <button id="btn-logout" onClick={handleLogout}

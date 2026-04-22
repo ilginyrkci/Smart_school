@@ -83,7 +83,7 @@ export default function AddTransactionModal({ onClose, onSuccess, editTx = null 
                 ].map(({ val, label, active }) => (
                   <button key={val} type="button" id={`subtype-${val}`} onClick={() => set('subtype', val)}
                     className={`flex-1 py-2 rounded-xl text-xs font-semibold border transition-all ${
-                      form.subtype === val ? active : 'border-[#C7D2FE] dark:border-[#1a1a4a] text-[#9CA3AF] dark:text-[#818CF8] hover:border-[#A5B4FC] dark:hover:border-[#251a5a]'
+                      form.subtype === val ? active : 'border-[#C7D2FE] dark:border-[#1a1a4a] text-[#9CA3AF] dark:text-[#818CF8] hover:border-[#A5B4FC] dark:hover:border-[#1e1a4a]'
                     }`}>
                     {label}
                   </button>

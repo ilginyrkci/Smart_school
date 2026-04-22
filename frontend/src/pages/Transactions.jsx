@@ -63,7 +63,7 @@ export default function Transactions() {
           ))}
         </div>
         <div className="flex-1 min-w-48 relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
           <input type="text" value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Ara..." className="input-field pl-9" />
         </div>

@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -17,7 +17,7 @@
     @apply bg-white dark:bg-[#141414] border border-[#C7D2FE] dark:border-[#1a1a4a] rounded-2xl shadow-sm;
   }
   .stat-card {
-    @apply glass-card p-5 transition-all duration-300 hover:border-[#A5B4FC] dark:hover:border-[#5a1a1a] hover:shadow-md hover:-translate-y-0.5;
+    @apply glass-card p-5 transition-all duration-300 hover:border-[#A5B4FC] dark:hover:border-[#3730A3] hover:shadow-md hover:-translate-y-0.5;
   }
   .btn-primary {
     @apply text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 shadow-md text-sm flex items-center gap-2;
@@ -28,7 +28,7 @@
     @apply shadow-lg;
   }
   .input-field {
-    @apply w-full bg-[#F9FAFB] dark:bg-[#141414] border border-[#C7D2FE] dark:border-[#1a1a4a] text-[#111827] dark:text-[#EEF2FF] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#4F46E5] focus:ring-1 placeholder-[#B0B8C4] dark:placeholder-[#5a1a1a] transition-all;
+    @apply w-full bg-[#F9FAFB] dark:bg-[#141414] border border-[#C7D2FE] dark:border-[#1a1a4a] text-[#111827] dark:text-[#EEF2FF] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#4F46E5] focus:ring-1 placeholder-[#B0B8C4] dark:placeholder-[#3730A3] transition-all;
   }
   .page-header  { @apply mb-6; }
   .page-title   { @apply text-2xl font-bold text-[#111827] dark:text-[#EEF2FF]; }

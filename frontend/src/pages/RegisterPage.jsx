@@ -134,7 +134,7 @@ export default function RegisterPage() {
               <div>
                 <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
                 <div className="relative">
-                  <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                  <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                   <input id="input-displayName" type="text" value={form.displayName}
                     onChange={e => set('displayName', e.target.value)}
                     placeholder="Adınız Soyadınız" className="input-field pl-10" autoFocus />
@@ -145,12 +145,12 @@ export default function RegisterPage() {
               <div>
                 <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Kullanıcı Adı</label>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a] text-sm font-bold select-none">@</span>
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a] text-sm font-bold select-none">@</span>
                   <input id="input-username" type="text" value={form.username}
                     onChange={e => set('username', e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                     placeholder="kullanici_adi" className="input-field pl-8" maxLength={30} required />
                 </div>
-                <p className="text-[#B0B8C4] dark:text-[#251a5a] text-xs mt-1">Küçük harf, rakam ve _ kullanabilirsiniz</p>
+                <p className="text-[#B0B8C4] dark:text-[#1e1a4a] text-xs mt-1">Küçük harf, rakam ve _ kullanabilirsiniz</p>
               </div>
 
               {/* Okul E-Postası */}
@@ -160,7 +160,7 @@ export default function RegisterPage() {
                   Okul E-Postası <span className="text-[#4F46E5] font-bold normal-case">*zorunlu</span>
                 </label>
                 <div className="relative">
-                  <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                  <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                   <input id="input-email" type="email" value={form.email}
                     onChange={e => set('email', e.target.value)}
                     placeholder="adi.soyadi@universite.edu.tr"
@@ -188,7 +188,7 @@ export default function RegisterPage() {
               <div>
                 <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre</label>
                 <div className="relative">
-                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                   <input id="input-password" type={showPass ? 'text' : 'password'} value={form.password}
                     onChange={e => set('password', e.target.value)}
                     placeholder="En az 6 karakter" className="input-field pl-10 pr-10" required />
@@ -203,7 +203,7 @@ export default function RegisterPage() {
               <div>
                 <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre Tekrar</label>
                 <div className="relative">
-                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                   <input id="input-confirmPass" type={showPass ? 'text' : 'password'} value={form.confirmPass}
                     onChange={e => set('confirmPass', e.target.value)}
                     placeholder="••••••" className={`input-field pl-10 pr-9 ${

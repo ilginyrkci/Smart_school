@@ -91,7 +91,7 @@ export default function LoginPage() {
               <button key={val} onClick={() => switchTab(val)}
                 className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all ${
                   tab === val
-                    ? 'text-[#4F46E5] border-b-2 border-[#4F46E5] bg-[#EEF2FF]/50 dark:bg-[#0f0f1a]/50'
+                    ? 'text-[#4F46E5] border-b-2 border-[#4F46E5] bg-[#EEF2FF]/50 dark:bg-[#0f0f14]/50'
                     : 'text-[#9CA3AF] dark:text-[#818CF8] hover:text-[#4F46E5]'
                 }`}>
                 <Icon size={15} /> {label}
@@ -107,7 +107,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Kullanıcı Adı</label>
                   <div className="relative">
-                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-username" type="text" value={loginForm.username}
                       onChange={e => setL('username', e.target.value.toLowerCase())}
                       placeholder="kullanici_adi" className="input-field pl-10" autoFocus required />
@@ -116,7 +116,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-password" type={showPass ? 'text' : 'password'} value={loginForm.password}
                       onChange={e => setL('password', e.target.value)}
                       placeholder="••••••" className="input-field pl-10 pr-10" required />
@@ -135,7 +135,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
                   <div className="relative">
-                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-displayName" type="text" value={regForm.displayName}
                       onChange={e => setR('displayName', e.target.value)}
                       placeholder="Adınız Soyadınız" className="input-field pl-10" autoFocus />
@@ -158,7 +158,7 @@ export default function LoginPage() {
                     Okul E-Postası <span className="text-[#4F46E5] font-bold normal-case text-xs">*zorunlu</span>
                   </label>
                   <div className="relative">
-                    <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-email" type="email" value={regForm.email}
                       onChange={e => setR('email', e.target.value)}
                       placeholder="adi@universite.edu.tr"
@@ -171,7 +171,7 @@ export default function LoginPage() {
                   </div>
                   {emailStatus === 'invalid' && <p className="text-red-500 text-xs mt-1.5">⚠ .edu.tr veya .edu uzantılı okul maili girin</p>}
                   {emailStatus === 'valid'   && <p className="text-green-600 dark:text-green-400 text-xs mt-1.5">✓ Okul e-postası onaylandı</p>}
-                  <p className="text-[#B0B8C4] dark:text-[#251a5a] text-xs mt-1.5 flex items-center gap-1">
+                  <p className="text-[#B0B8C4] dark:text-[#1e1a4a] text-xs mt-1.5 flex items-center gap-1">
                     <GraduationCap size={11} className="text-[#A5B4FC]" />
                     Yalnızca öğrenci ve öğretim üyelerine açıktır
                   </p>
@@ -180,7 +180,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-reg-password" type={showPass ? 'text' : 'password'} value={regForm.password}
                       onChange={e => setR('password', e.target.value)}
                       placeholder="En az 6 karakter" className="input-field pl-10 pr-10" required />
@@ -194,7 +194,7 @@ export default function LoginPage() {
                 <div>
                   <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Şifre Tekrar</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-confirmPass" type={showPass ? 'text' : 'password'} value={regForm.confirmPass}
                       onChange={e => setR('confirmPass', e.target.value)}
                       placeholder="••••••" className={`input-field pl-10 pr-9 ${

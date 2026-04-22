@@ -27,7 +27,7 @@ export default function BottomNav() {
             }>
             {({ isActive }) => (
               <>
-                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#EEF2FF] dark:bg-[#0f0f1a]' : ''}`}>
+                <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-[#EEF2FF] dark:bg-[#0f0f14]' : ''}`}>
                   <Icon size={20} />
                 </div>
                 <span className="text-[10px] font-medium truncate">{label}</span>

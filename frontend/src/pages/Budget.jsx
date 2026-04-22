@@ -47,7 +47,7 @@ export default function Budget() {
     ? { msg: '🚨 Bütçenizin sonuna yaklaştınız! Harcamaları acil azaltın.', cls: 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400' }
     : pct >= 75
     ? { msg: '⚠️ Bütçenizin büyük kısmını kullandınız. Dikkatli devam edin.', cls: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400' }
-    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#EEF2FF] dark:bg-[#1a1a1a] border-[#A5B4FC] dark:border-[#251a5a] text-[#4F46E5] dark:text-[#A5B4FC]' }
+    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#EEF2FF] dark:bg-[#1a1a1a] border-[#A5B4FC] dark:border-[#1e1a4a] text-[#4F46E5] dark:text-[#A5B4FC]' }
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
@@ -70,7 +70,7 @@ export default function Budget() {
                     autoFocus />
                 </div>
                 <button id="btn-save-budget" onClick={handleSave} disabled={saving}
-                  className="p-2.5 text-[#4F46E5] bg-[#EEF2FF] dark:bg-[#1a1a1a] border border-[#A5B4FC] dark:border-[#251a5a] rounded-xl hover:bg-[#C7D2FE] dark:hover:bg-[#1a1a4a] transition-all">
+                  className="p-2.5 text-[#4F46E5] bg-[#EEF2FF] dark:bg-[#1a1a1a] border border-[#A5B4FC] dark:border-[#1e1a4a] rounded-xl hover:bg-[#C7D2FE] dark:hover:bg-[#1a1a4a] transition-all">
                   <Check size={16} />
                 </button>
                 <button id="btn-cancel-budget" onClick={() => setEditing(false)}

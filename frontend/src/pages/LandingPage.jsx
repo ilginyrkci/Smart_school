@@ -136,7 +136,7 @@ export default function LandingPage() {
             {NAV_LINKS.map(({ label, href }) => (
               <li key={label}>
                 <button onClick={() => scrollTo(href.slice(1))}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a] transition-all">
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14] transition-all">
                   {label}
                 </button>
               </li>
@@ -150,7 +150,7 @@ export default function LandingPage() {
               {isDark ? <Sun size={18} className="text-[#22C55E]" /> : <Moon size={18} />}
             </button>
             <Link to="/login"
-              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a] transition-all">
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14] transition-all">
               Giriş Yap
             </Link>
             <Link to="/login"
@@ -177,7 +177,7 @@ export default function LandingPage() {
           <div className="md:hidden bg-white dark:bg-[#141414] border-t border-[#C7D2FE] dark:border-[#1a1a4a] px-6 py-4 space-y-1">
             {NAV_LINKS.map(({ label, href }) => (
               <button key={label} onClick={() => { scrollTo(href.slice(1)); setMenuOpen(false) }}
-                className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a] transition-all">
+                className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14] transition-all">
                 {label}
               </button>
             ))}
@@ -246,7 +246,7 @@ export default function LandingPage() {
 
           {/* Scroll hint */}
           <button onClick={() => scrollTo('features')}
-            className="mt-12 flex flex-col items-center gap-1 text-[#B0B8C4] dark:text-[#251a5a] text-xs hover:text-[#4F46E5] transition-colors mx-auto">
+            className="mt-12 flex flex-col items-center gap-1 text-[#B0B8C4] dark:text-[#1e1a4a] text-xs hover:text-[#4F46E5] transition-colors mx-auto">
             <span>Keşfet</span>
             <ChevronDown size={18} className="animate-bounce" />
           </button>
@@ -257,7 +257,7 @@ export default function LandingPage() {
       <section id="features" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-[#EEF2FF] dark:bg-[#0f0f1a] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-[#EEF2FF] dark:bg-[#0f0f14] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] mb-4">
               ✦ Özellikler
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-[#111827] dark:text-[#EEF2FF] mb-4">
@@ -331,7 +331,7 @@ export default function LandingPage() {
               {team.map(({ name, role, avatar, desc }) => (
                 <div key={name}
                   className="flex items-center gap-5 bg-white dark:bg-[#141414] border border-[#C7D2FE] dark:border-[#1a1a4a] rounded-2xl p-5 hover:shadow-lg transition-all">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl bg-[#EEF2FF] dark:bg-[#0f0f1a] flex-shrink-0">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl bg-[#EEF2FF] dark:bg-[#0f0f14] flex-shrink-0">
                     {avatar}
                   </div>
                   <div>
@@ -351,7 +351,7 @@ export default function LandingPage() {
       <section id="contact" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-[#EEF2FF] dark:bg-[#0f0f1a] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-[#EEF2FF] dark:bg-[#0f0f14] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] mb-4">
               ✦ İletişim
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-[#111827] dark:text-[#EEF2FF] mb-4">
@@ -442,7 +442,7 @@ export default function LandingPage() {
               Ücretsiz Başla <ArrowRight size={20} />
             </Link>
             <Link to="/login"
-              className="px-8 py-4 rounded-2xl text-[#4F46E5] font-semibold border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f1a] transition-all text-lg">
+              className="px-8 py-4 rounded-2xl text-[#4F46E5] font-semibold border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#EEF2FF] dark:hover:bg-[#0f0f14] transition-all text-lg">
               Giriş Yap
             </Link>
           </div>
@@ -469,7 +469,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <p className="text-sm text-[#B0B8C4] dark:text-[#251a5a]">
+          <p className="text-sm text-[#B0B8C4] dark:text-[#1e1a4a]">
             © 2024 Akıllı Harçlık. Tüm hakları saklıdır.
           </p>
         </div>
@@ -524,7 +524,7 @@ export default function LandingPage() {
                 <div className={`max-w-[78%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
                   msg.from === 'user'
                     ? 'text-white rounded-br-sm'
-                    : 'bg-[#EEF2FF] dark:bg-[#0f0f1a] text-[#111827] dark:text-[#EEF2FF] border border-[#C7D2FE] dark:border-[#1a1a4a] rounded-bl-sm'
+                    : 'bg-[#EEF2FF] dark:bg-[#0f0f14] text-[#111827] dark:text-[#EEF2FF] border border-[#C7D2FE] dark:border-[#1a1a4a] rounded-bl-sm'
                 }`}
                   style={msg.from === 'user' ? { background: 'linear-gradient(135deg, #4F46E5, #A5B4FC)' } : {}}>
                   {msg.text}
@@ -538,7 +538,7 @@ export default function LandingPage() {
           <div className="px-3 pb-2 flex gap-1.5 flex-wrap">
             {['Nasıl kayıt olabilirim?', 'Ücretsiz mi?', 'Özellikler neler?'].map(q => (
               <button key={q} onClick={() => { setChatInput(q); setTimeout(() => sendMessage, 0); setMessages(prev => [...prev, { from: 'user', text: q }, { from: 'bot', text: getBotReply(q) }]) }}
-                className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#EEF2FF] dark:bg-[#0f0f1a] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#C7D2FE] transition-all">
+                className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#EEF2FF] dark:bg-[#0f0f14] text-[#4F46E5] border border-[#C7D2FE] dark:border-[#1a1a4a] hover:bg-[#C7D2FE] transition-all">
                 {q}
               </button>
             ))}

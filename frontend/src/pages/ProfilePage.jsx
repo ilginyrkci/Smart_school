@@ -154,7 +154,7 @@ export default function Profile() {
           <div>
             <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
             <div className="relative">
-              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
               <input id="input-profile-name" type="text" value={profileForm.displayName}
                 onChange={e => setProfileForm(p => ({ ...p, displayName: e.target.value }))}
                 placeholder="Adınız Soyadınız" className="input-field pl-10" />
@@ -164,7 +164,7 @@ export default function Profile() {
           <div>
             <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
             <div className="relative">
-              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
               <input id="input-profile-email" type="email" value={profileForm.email}
                 onChange={e => setProfileForm(p => ({ ...p, email: e.target.value }))}
                 placeholder="email@example.com" className="input-field pl-10" />
@@ -213,7 +213,7 @@ export default function Profile() {
           <div>
             <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Yeni Kullanıcı Adı</label>
             <div className="relative">
-              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
               <input id="input-new-username" type="text" value={newUsername}
                 onChange={e => setNewUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                 placeholder="yeni_kullanici_adi" className="input-field pl-10 font-mono" maxLength={30} />
@@ -247,12 +247,12 @@ export default function Profile() {
             <div key={key}>
               <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                 <input id={id} type={show ? 'text' : 'password'} value={passForm[key]}
                   onChange={e => setPassForm(p => ({ ...p, [key]: e.target.value }))}
                   placeholder="••••••" className="input-field pl-10 pr-10" required />
                 <button type="button" onClick={toggle}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a] hover:text-[#6B7280] transition-colors">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a] hover:text-[#6B7280] transition-colors">
                   {show ? <EyeOff size={14} /> : <Eye size={14} />}
                 </button>
               </div>

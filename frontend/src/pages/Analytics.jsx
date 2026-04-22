@@ -79,7 +79,7 @@ export default function Analytics() {
           <h3 className="text-[#111827] dark:text-[#EEF2FF] font-bold mb-4">Kategori Dağılımı</h3>
           <div className="h-48 lg:h-56 flex items-center justify-center">
             {cats.length === 0
-              ? <p className="text-[#B0B8C4] dark:text-[#251a5a]">Henüz harcama verisi yok</p>
+              ? <p className="text-[#B0B8C4] dark:text-[#1e1a4a]">Henüz harcama verisi yok</p>
               : <Doughnut data={donutData} options={{ responsive: true, maintainAspectRatio: false, cutout: '65%',
                   plugins: { legend: { position: 'bottom', labels: { color: isDark ? '#A5B4FC' : '#6B7280', font: { size: 10 }, padding: 8 } } } }} />
             }
@@ -98,7 +98,7 @@ export default function Analytics() {
                       <span className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                       {cat.name}
                     </span>
-                    <span className="text-[#111827] dark:text-[#EEF2FF]">{fmt(cat.amount)} <span className="text-[#B0B8C4] dark:text-[#251a5a]">%{pct.toFixed(0)}</span></span>
+                    <span className="text-[#111827] dark:text-[#EEF2FF]">{fmt(cat.amount)} <span className="text-[#B0B8C4] dark:text-[#1e1a4a]">%{pct.toFixed(0)}</span></span>
                   </div>
                   <div className="h-1.5 bg-[#EEF2FF] dark:bg-[#1a1a1a] rounded-full border border-[#C7D2FE] dark:border-[#1a1a4a]">
                     <div className="h-full rounded-full transition-all duration-700"

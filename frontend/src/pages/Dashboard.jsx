@@ -55,7 +55,7 @@ export default function Dashboard() {
     { id: 'stat-balance',  title: 'Net Bakiye',     val: fmt((summary?.totalIncome || 0) - (summary?.totalExpenses || 0)),
       Icon: DollarSign,   cls: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800', icon: 'text-blue-600 dark:text-blue-400' },
     { id: 'stat-savings',  title: 'Tasarruf Oranı', val: `%${savings.toFixed(1)}`,
-      Icon: PiggyBank,    cls: 'bg-[#EEF2FF] dark:bg-[#1a1a1a] border-[#A5B4FC] dark:border-[#251a5a]', icon: 'text-[#4F46E5] dark:text-[#A5B4FC]' },
+      Icon: PiggyBank,    cls: 'bg-[#EEF2FF] dark:bg-[#1a1a1a] border-[#A5B4FC] dark:border-[#1e1a4a]', icon: 'text-[#4F46E5] dark:text-[#A5B4FC]' },
   ]
 
   return (
@@ -117,7 +117,7 @@ export default function Dashboard() {
         </div>
         <div className="space-y-1">
           {txs.length === 0 ? (
-            <p className="text-[#B0B8C4] dark:text-[#251a5a] text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
+            <p className="text-[#B0B8C4] dark:text-[#1e1a4a] text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
           ) : txs.map(tx => (
             <div key={tx.id} className="flex items-center justify-between py-2.5 border-b border-[#EEF2FF] dark:border-[#1a1a1a] last:border-0 hover:bg-[#F5F5FF] dark:hover:bg-[#1a1a1a] rounded-lg px-2 -mx-2 transition-colors">
               <div className="flex items-center gap-3">
