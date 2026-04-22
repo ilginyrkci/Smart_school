@@ -1,12 +1,37 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   TrendingUp, Menu, X, ArrowRight, ChevronDown,
   Brain, BarChart3, Wallet, Shield, Users, Mail,
-  MapPin, Phone, Star, GraduationCap, Sparkles
+  MapPin, Phone, Star, GraduationCap, Sparkles,
+  ChevronUp, Send, Bot, MessageCircle
 } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 import { Sun, Moon } from 'lucide-react'
+
+// ── Chatbot Yanıt Motoru ──
+const BOT_REPLIES = [
+  { keys: ['merhaba','selam','hey','hi'],          reply: 'Merhaba! 👋 Akıllı Harçlık yardım botuyum. Sana nasıl yardımcı olabilirim?' },
+  { keys: ['kayıt','kaydol','kayit','üye'],        reply: '🎓 Kayıt olmak için okul e-postan gerekiyor (.edu.tr veya .edu uzantılı). Sağ üstteki «Ücretsiz Başla» butonuna tıkla!' },
+  { keys: ['mail','email','eposta','e-posta'],     reply: '📧 Yalnızca okul/üniversite e-postaları (.edu.tr veya .edu) kabul edilmektedir.' },
+  { keys: ['giriş','giris','login','şifre'],       reply: '🔐 Giriş yapmak için «Giriş Yap» butonuna tıkla. Kullanıcı adın ve şifreni gir.' },
+  { keys: ['ücret','ücretsiz','fiyat','para'],     reply: '✅ Akıllı Harçlık tamamen ücretsizdir! Hiçbir ücret talep etmiyoruz.' },
+  { keys: ['özellik','neler','ne var','yapabilir'],reply: '⚡ Gelir-gider takibi, bütçe planlama, yapay zeka finans koçu, detaylı analizler ve çok daha fazlası!' },
+  { keys: ['koç','coach','tavsiye','öneri'],       reply: '🧠 Finans Koçu, harcama alışkanlıklarını analiz ederek sana özel tasarruf tavsiyeleri sunar.' },
+  { keys: ['bütçe','butce','limit'],               reply: '💰 Bütçe sayfasından aylık harcama limitini belirleyebilir, ne kadar harcadığını takip edebilirsin.' },
+  { keys: ['analiz','grafik','rapor','istatistik'],reply: '📊 Analiz sayfasında gelir-gider grafiklerini ve harcama kategorilerini görebilirsin.' },
+  { keys: ['iletişim','destek','yardım','sorun'],  reply: '📬 Sorun yaşıyorsan sayfanın İletişim bölümünden bize ulaşabilirsin.' },
+  { keys: ['nasıl','nası','nasil'],                reply: '📖 Önce okul mailinle kayıt ol, sonra gelirlerini ve giderlerini gir. Yapay zeka koçun her şeyi analiz eder!' },
+  { keys: ['güvenli','güvenlik','veri','gizli'],   reply: '🔒 Verilerın SSL ile şifrelenmiş sunucularda saklanır. Yalnızca sen erişebilirsin.' },
+]
+
+function getBotReply(msg) {
+  const lower = msg.toLowerCase()
+  for (const { keys, reply } of BOT_REPLIES) {
+    if (keys.some(k => lower.includes(k))) return reply
+  }
+  return '🤔 Üzgünüm, bunu tam anlayamadım. «iletişim», «kayıt», «özellikler» veya «nasıl» diyerek daha fazla yardım alabilirsin!'
+}
 
 const NAV_LINKS = [
   { label: 'Ana Sayfa',  href: '#home' },
@@ -21,16 +46,42 @@ const scrollTo = (id) => {
 
 export default function LandingPage() {
   const { isDark, toggle } = useTheme()
-  const [menuOpen, setMenuOpen]     = useState(false)
-  const [scrolled, setScrolled]     = useState(false)
+  const [menuOpen, setMenuOpen]       = useState(false)
+  const [scrolled, setScrolled]       = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false)
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' })
-  const [sent, setSent]             = useState(false)
+  const [sent, setSent]               = useState(false)
+
+  // Chatbot state
+  const [chatOpen, setChatOpen]   = useState(false)
+  const [chatInput, setChatInput] = useState('')
+  const [messages, setMessages]   = useState([
+    { from: 'bot', text: 'Merhaba! 👋 Ben Akıllı Harçlık yardım botuyum. Sana nasıl yardımcı olabilirim?' }
+  ])
+  const chatEndRef = useRef(null)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 40)
+    const fn = () => {
+      setScrolled(window.scrollY > 40)
+      setShowScrollTop(window.scrollY > 400)
+    }
     window.addEventListener('scroll', fn)
     return () => window.removeEventListener('scroll', fn)
   }, [])
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  const sendMessage = () => {
+    if (!chatInput.trim()) return
+    const userMsg = chatInput.trim()
+    setChatInput('')
+    setMessages(prev => [...prev, { from: 'user', text: userMsg }])
+    setTimeout(() => {
+      setMessages(prev => [...prev, { from: 'bot', text: getBotReply(userMsg) }])
+    }, 600)
+  }
 
   const handleContact = (e) => {
     e.preventDefault()
@@ -423,6 +474,110 @@ export default function LandingPage() {
           </p>
         </div>
       </footer>
+
+      {/* ═══════════════════ SCROLL TO TOP ═══════════════════ */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className={`fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
+          showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}
+        aria-label="Yukarı çık">
+        <ChevronUp size={22} />
+      </button>
+
+      {/* ═══════════════════ CHATBOT ═══════════════════ */}
+      {/* Chat paneli */}
+      <div className={`fixed bottom-24 right-6 z-50 w-80 transition-all duration-300 ${
+        chatOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-6 pointer-events-none'
+      }`}>
+        <div className="bg-white dark:bg-[#141414] border border-[#FFDCC8] dark:border-[#4a1a1a] rounded-3xl shadow-2xl overflow-hidden flex flex-col" style={{ height: '420px' }}>
+
+          {/* Header */}
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-[#FFDCC8] dark:border-[#4a1a1a]"
+            style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
+            <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center">
+              <Bot size={18} className="text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-bold text-sm">Akıllı Asistan</p>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-300 animate-pulse" />
+                <span className="text-white/70 text-xs">Çevrimiçi</span>
+              </div>
+            </div>
+            <button onClick={() => setChatOpen(false)} className="text-white/80 hover:text-white transition-colors p-1">
+              <X size={16} />
+            </button>
+          </div>
+
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
+                {msg.from === 'bot' && (
+                  <div className="w-7 h-7 rounded-xl flex items-center justify-center mr-2 flex-shrink-0 mt-0.5"
+                    style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
+                    <Bot size={13} className="text-white" />
+                  </div>
+                )}
+                <div className={`max-w-[78%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                  msg.from === 'user'
+                    ? 'text-white rounded-br-sm'
+                    : 'bg-[#FFF0E4] dark:bg-[#1a0f0f] text-[#2D2D2D] dark:text-[#FFF0E4] border border-[#FFDCC8] dark:border-[#4a1a1a] rounded-bl-sm'
+                }`}
+                  style={msg.from === 'user' ? { background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' } : {}}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+            <div ref={chatEndRef} />
+          </div>
+
+          {/* Quick replies */}
+          <div className="px-3 pb-2 flex gap-1.5 flex-wrap">
+            {['Nasıl kayıt olabilirim?', 'Ücretsiz mi?', 'Özellikler neler?'].map(q => (
+              <button key={q} onClick={() => { setChatInput(q); setTimeout(() => sendMessage, 0); setMessages(prev => [...prev, { from: 'user', text: q }, { from: 'bot', text: getBotReply(q) }]) }}
+                className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#FFF0E4] dark:bg-[#1a0f0f] text-[#FF6B6B] border border-[#FFDCC8] dark:border-[#4a1a1a] hover:bg-[#FFDCC8] transition-all">
+                {q}
+              </button>
+            ))}
+          </div>
+
+          {/* Input */}
+          <div className="px-3 pb-3">
+            <div className="flex gap-2 bg-[#FFF7ED] dark:bg-[#0a0a0a] border border-[#FFDCC8] dark:border-[#4a1a1a] rounded-2xl p-1.5">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && sendMessage()}
+                placeholder="Bir şeyler yaz..."
+                className="flex-1 bg-transparent text-sm text-[#2D2D2D] dark:text-[#FFF0E4] placeholder-[#B0B8C4] outline-none px-2" />
+              <button onClick={sendMessage}
+                disabled={!chatInput.trim()}
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-white disabled:opacity-40 transition-all hover:scale-105"
+                style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
+                <Send size={15} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Chat butonu */}
+      <button
+        onClick={() => setChatOpen(!chatOpen)}
+        className="fixed bottom-6 right-20 z-50 w-14 h-14 rounded-2xl text-white shadow-xl flex items-center justify-center transition-all hover:-translate-y-1 hover:shadow-2xl"
+        style={{ background: 'linear-gradient(135deg, #4D96FF, #FF6B6B)' }}
+        aria-label="Sohbet botu">
+        {chatOpen
+          ? <X size={22} />
+          : <>
+              <MessageCircle size={24} />
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-green-400 border-2 border-white animate-pulse" />
+            </>}
+      </button>
     </div>
   )
 }
