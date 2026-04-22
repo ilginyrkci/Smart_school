@@ -33,9 +33,10 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody Map<String, Object> body) {
         try {
             return ResponseEntity.status(201).body(authService.register(
-                    body.getOrDefault("username", "").toString(),
-                    body.getOrDefault("password", "").toString(),
-                    body.getOrDefault("displayName", "").toString()
+                    body.getOrDefault("username",    "").toString(),
+                    body.getOrDefault("password",    "").toString(),
+                    body.getOrDefault("displayName", "").toString(),
+                    body.getOrDefault("email",       "").toString()
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));

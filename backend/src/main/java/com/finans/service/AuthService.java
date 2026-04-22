@@ -39,19 +39,50 @@ public class AuthService {
         }
     }
 
+    // ----- Okul Maili Kontrolü -----
+    private void validateSchoolEmail(String email) {
+        if (email == null || email.isBlank()) {
+            throw new RuntimeException("Okul e-posta adresi zorunludur.");
+        }
+        String lower = email.toLowerCase().trim();
+        // Kabul: *.edu.tr  veya  *.edu
+        if (!lower.matches("^[\\w.+-]+@[\\w.-]+\\.edu\\.tr$") &&
+            !lower.matches("^[\\w.+-]+@[\\w.-]+\\.edu$")) {
+            throw new RuntimeException(
+                "Yalnızca okul/üniversite e-posta adresleriyle kayıt olunabilir. " +
+                "(.edu.tr veya .edu uzantılı)");
+        }
+    }
+
     // ----- Kayıt -----
-    public Map<String, Object> register(String username, String password, String displayName) {
+    public Map<String, Object> register(String username, String password, String displayName, String email) {
+        // E-posta kontrolü
+        validateSchoolEmail(email);
+
+        String normalizedEmail = email.toLowerCase().trim();
+
+        if (userRepository.existsByEmail(normalizedEmail)) {
+            throw new RuntimeException("Bu okul e-postası zaten kayıtlı.");
+        }
         if (userRepository.existsByUsername(username)) {
             throw new RuntimeException("Bu kullanıcı adı zaten kullanılıyor.");
         }
-        if (username.length() < 3) {
+        if (username.isBlank() || username.length() < 3) {
             throw new RuntimeException("Kullanıcı adı en az 3 karakter olmalı.");
+        }
+        if (!username.matches("[a-zA-Z0-9_]{3,30}")) {
+            throw new RuntimeException("Kullanıcı adı sadece harf, rakam ve _ içerebilir.");
         }
         if (password.length() < 6) {
             throw new RuntimeException("Şifre en az 6 karakter olmalı.");
         }
 
-        User user = new User(username, hashPassword(password), displayName.isBlank() ? username : displayName);
+        User user = new User(
+            username.toLowerCase(),
+            hashPassword(password),
+            displayName.isBlank() ? username : displayName,
+            normalizedEmail
+        );
         String token = UUID.randomUUID().toString();
         user.setSessionToken(token);
         userRepository.save(user);

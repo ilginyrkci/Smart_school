@@ -56,7 +56,7 @@ export const reportService = {
 
 export const authService = {
   login:              (username, password)                   => API.post('/auth/login', { username, password }),
-  register:           (username, password, displayName)      => API.post('/auth/register', { username, password, displayName }),
+  register:           (username, password, displayName, email) => API.post('/auth/register', { username, password, displayName, email }),
   getProfile:         ()                                     => API.get('/auth/me'),
   updateProfile:      (data)                                 => API.put('/auth/profile', data),
   changePassword:     (oldPassword, newPassword)             => API.put('/auth/password', { oldPassword, newPassword }),
