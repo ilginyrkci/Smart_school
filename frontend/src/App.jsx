@@ -1,15 +1,16 @@
-﻿import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
-import Sidebar    from './components/Sidebar'
-import BottomNav  from './components/BottomNav'
-import Dashboard  from './pages/Dashboard'
+import Sidebar      from './components/Sidebar'
+import BottomNav    from './components/BottomNav'
+import Dashboard    from './pages/Dashboard'
 import Transactions from './pages/Transactions'
-import Analytics  from './pages/Analytics'
-import Coach      from './pages/Coach'
-import Budget     from './pages/Budget'
-import LoginPage  from './pages/LoginPage'
-import ProfilePage from './pages/ProfilePage'
+import Analytics    from './pages/Analytics'
+import Coach        from './pages/Coach'
+import Budget       from './pages/Budget'
+import LoginPage    from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import ProfilePage  from './pages/ProfilePage'
 
 function AppLayout() {
   const { user, loading } = useAuth()
@@ -23,8 +24,16 @@ function AppLayout() {
     </div>
   )
 
-  if (!user) return <LoginPage />
+  /* ── Giriş yapılmamışsa: sadece /login ve /register ── */
+  if (!user) return (
+    <Routes>
+      <Route path="/login"    element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="*"         element={<Navigate to="/login" replace />} />
+    </Routes>
+  )
 
+  /* ── Giriş yapılmışsa: ana uygulama ── */
   return (
     <div className="flex h-screen bg-[#FFF7ED] dark:bg-[#0a0a0a] overflow-hidden">
       <Sidebar />
@@ -36,6 +45,9 @@ function AppLayout() {
           <Route path="/coach"        element={<Coach />} />
           <Route path="/budget"       element={<Budget />} />
           <Route path="/profile"      element={<ProfilePage />} />
+          {/* /login veya /register'a girilirse ana sayfaya at */}
+          <Route path="/login"        element={<Navigate to="/" replace />} />
+          <Route path="/register"     element={<Navigate to="/" replace />} />
           <Route path="*"             element={<Navigate to="/" replace />} />
         </Routes>
       </main>
