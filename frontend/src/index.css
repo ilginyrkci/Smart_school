@@ -4,33 +4,33 @@
 
 @layer base {
   html { font-family: 'Inter', sans-serif; }
+  body { background-color: #F1F8E9; color: #263238; }
 
   ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #0f0f1f; }
-  ::-webkit-scrollbar-thumb { background: #2d2d4e; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+  ::-webkit-scrollbar-track { background: #E8F5E9; }
+  ::-webkit-scrollbar-thumb { background: #A5D6A7; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2E7D32; }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-gray-900/70 backdrop-blur-sm border border-gray-800/60 rounded-2xl;
+    @apply bg-white border border-[#C8E6C9] rounded-2xl shadow-sm;
   }
   .stat-card {
-    @apply glass-card p-5 transition-all duration-300 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/5 hover:-translate-y-0.5;
+    @apply glass-card p-5 transition-all duration-300 hover:border-[#66BB6A] hover:shadow-md hover:-translate-y-0.5;
   }
   .btn-primary {
-    @apply bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/20 text-sm flex items-center gap-2;
+    @apply text-white font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 shadow-md text-sm flex items-center gap-2;
+    background: linear-gradient(135deg, #2E7D32, #66BB6A);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #1B5E20, #43A047);
+    @apply shadow-lg;
   }
   .input-field {
-    @apply w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/30 placeholder-gray-500 transition-all;
+    @apply w-full bg-[#F1F8E9] border border-[#C8E6C9] text-[#263238] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#2E7D32] focus:ring-1 placeholder-[#90A4AE] transition-all;
   }
-  .page-header {
-    @apply mb-6;
-  }
-  .page-title {
-    @apply text-2xl font-bold text-white;
-  }
-  .page-subtitle {
-    @apply text-gray-400 text-sm mt-1;
-  }
+  .page-header  { @apply mb-6; }
+  .page-title   { @apply text-2xl font-bold text-[#263238]; }
+  .page-subtitle{ @apply text-[#546E7A] text-sm mt-1; }
 }

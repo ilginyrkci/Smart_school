@@ -31,7 +31,7 @@ export default function Profile() {
   const [profileForm, setProfileForm] = useState({
     displayName: user?.displayName || '',
     email:       user?.email       || '',
-    avatarColor: user?.avatarColor || '#7c3aed',
+    avatarColor: user?.avatarColor || '#2E7D32',
   })
 
   const [newUsername, setNewUsername] = useState('')
@@ -90,12 +90,12 @@ export default function Profile() {
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in max-w-2xl">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Link to="/" className="p-2 text-gray-500 hover:text-white hover:bg-gray-800 rounded-xl transition-all">
+        <Link to="/" className="p-2 text-[#546E7A] hover:text-[#263238] hover:bg-[#E8F5E9] rounded-xl transition-all">
           <ArrowLeft size={18} />
         </Link>
         <div>
-          <h2 className="text-2xl lg:text-3xl font-black text-white">Profil Ayarları</h2>
-          <p className="text-gray-400 text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-[#263238]">Profil Ayarları</h2>
+          <p className="text-[#546E7A] text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
         </div>
       </div>
 
@@ -109,9 +109,9 @@ export default function Profile() {
           {initials(profileForm.displayName || user?.displayName)}
         </div>
         <div>
-          <p className="text-white font-bold text-xl">{profileForm.displayName || user?.displayName}</p>
-          <p className="text-gray-400 text-sm">@{user?.username}</p>
-          <p className="text-gray-600 text-xs mt-1">
+          <p className="text-[#263238] font-bold text-xl">{profileForm.displayName || user?.displayName}</p>
+          <p className="text-[#546E7A] text-sm">@{user?.username}</p>
+          <p className="text-[#90A4AE] text-xs mt-1">
             Üyelik: {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('tr-TR') : '—'}
           </p>
         </div>
@@ -136,15 +136,15 @@ export default function Profile() {
 
       {/* Bildirimler */}
       {success && (
-        <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-4 py-3">
-          <CheckCircle size={16} className="text-emerald-400 flex-shrink-0" />
-          <p className="text-emerald-300 text-sm">{success}</p>
+        <div className="flex items-center gap-2 bg-[#E8F5E9] border border-[#A5D6A7] rounded-xl px-4 py-3">
+          <CheckCircle size={16} className="text-[#2E7D32] flex-shrink-0" />
+          <p className="text-[#2E7D32] text-sm">{success}</p>
         </div>
       )}
       {error && (
-        <div className="flex items-center gap-2 bg-rose-500/10 border border-rose-500/30 rounded-xl px-4 py-3">
-          <AlertCircle size={16} className="text-rose-400 flex-shrink-0" />
-          <p className="text-rose-400 text-sm">{error}</p>
+        <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+          <AlertCircle size={16} className="text-red-500 flex-shrink-0" />
+          <p className="text-red-600 text-sm">{error}</p>
         </div>
       )}
 

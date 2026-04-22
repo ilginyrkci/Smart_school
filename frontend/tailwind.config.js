@@ -1,22 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
-        finance: {
-          bg:      '#080812',
-          card:    '#0f0f1f',
-          border:  '#1a1a2e',
-          sidebar: '#0a0a1a',
+        brand: {
+          primary:    '#2E7D32',
+          secondary:  '#66BB6A',
+          bg:         '#F1F8E9',
+          accent:     '#FFC107',
+          text:       '#263238',
+          textMuted:  '#546E7A',
+          border:     '#C8E6C9',
+          card:       '#FFFFFF',
+          sidebar:    '#FFFFFF',
+          lightGreen: '#E8F5E9',
         }
       },
       animation: {
-        'fade-in': 'fadeIn 0.3s ease-in-out',
+        'fade-in':  'fadeIn 0.3s ease-in-out',
         'slide-up': 'slideUp 0.4s ease-out',
       },
       keyframes: {

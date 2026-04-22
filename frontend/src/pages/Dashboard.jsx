@@ -37,26 +37,25 @@ export default function Dashboard() {
   if (loading) return (
     <div className="flex items-center justify-center h-full">
       <div className="text-center">
-        <div className="w-12 h-12 border-2 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-        <p className="text-gray-400 text-sm">Yükleniyor...</p>
+        <div className="w-12 h-12 border-2 border-[#2E7D32] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+        <p className="text-[#546E7A] text-sm">Yükleniyor...</p>
       </div>
     </div>
   )
 
   const savings = summary ? ((summary.totalIncome - summary.totalExpenses) / (summary.totalIncome || 1)) * 100 : 0
   const pct     = budget?.percentage || 0
-  const pctColor = pct >= 90 ? 'bg-rose-500' : pct >= 75 ? 'bg-amber-400' : 'bg-emerald-500'
+  const pctColor = pct >= 90 ? 'bg-red-500' : pct >= 75 ? 'bg-[#FFC107]' : 'bg-[#2E7D32]'
 
   const cards = [
     { id: 'stat-income',   title: 'Toplam Gelir',   val: fmt(summary?.totalIncome || 0),
-      Icon: TrendingUp,  grad: 'from-emerald-500/20 to-emerald-600/5', border: 'border-emerald-500/20', icon: 'text-emerald-400' },
+      Icon: TrendingUp,   bg: 'bg-emerald-50',  border: 'border-emerald-200', icon: 'text-emerald-600' },
     { id: 'stat-expenses', title: 'Toplam Gider',   val: fmt(summary?.totalExpenses || 0),
-      Icon: TrendingDown, grad: 'from-rose-500/20 to-rose-600/5',     border: 'border-rose-500/20',    icon: 'text-rose-400' },
+      Icon: TrendingDown, bg: 'bg-red-50',      border: 'border-red-200',     icon: 'text-red-500' },
     { id: 'stat-balance',  title: 'Net Bakiye',     val: fmt((summary?.totalIncome || 0) - (summary?.totalExpenses || 0)),
-      Icon: DollarSign,  grad: (summary?.netBalance ?? 0) >= 0 ? 'from-blue-500/20 to-blue-600/5' : 'from-red-500/20 to-red-600/5',
-      border: 'border-blue-500/20', icon: (summary?.netBalance ?? 0) >= 0 ? 'text-blue-400' : 'text-red-400' },
+      Icon: DollarSign,   bg: 'bg-blue-50',     border: 'border-blue-200',    icon: 'text-blue-600' },
     { id: 'stat-savings',  title: 'Tasarruf Oranı', val: `%${savings.toFixed(1)}`,
-      Icon: PiggyBank,   grad: 'from-purple-500/20 to-violet-600/5',   border: 'border-purple-500/20',  icon: 'text-purple-400' },
+      Icon: PiggyBank,    bg: 'bg-[#E8F5E9]',   border: 'border-[#A5D6A7]',  icon: 'text-[#2E7D32]' },
   ]
 
   return (
@@ -64,8 +63,8 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-2xl lg:text-3xl font-black text-white">Dashboard</h2>
-          <p className="text-gray-400 text-xs lg:text-sm mt-1">{new Date().toLocaleDateString('tr-TR', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-[#263238]">Dashboard</h2>
+          <p className="text-[#546E7A] text-xs lg:text-sm mt-1">{new Date().toLocaleDateString('tr-TR', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}</p>
         </div>
         <button id="btn-add-transaction" onClick={() => setShowAdd(true)} className="btn-primary">
           <Plus size={16} /> Yeni İşlem
@@ -74,66 +73,66 @@ export default function Dashboard() {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {cards.map(({ id, title, val, Icon, grad, border, icon }) => (
-          <div key={id} id={id} className={`stat-card bg-gradient-to-br ${grad} border ${border}`}>
+        {cards.map(({ id, title, val, Icon, bg, border, icon }) => (
+          <div key={id} id={id} className={`stat-card ${bg} border ${border}`}>
             <div className="flex items-center justify-between mb-3">
-              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wide">{title}</p>
+              <p className="text-[#546E7A] text-xs font-semibold uppercase tracking-wide">{title}</p>
               <Icon size={18} className={`${icon} opacity-80`} />
             </div>
-            <p className="text-xl font-bold text-white">{val}</p>
+            <p className="text-xl font-bold text-[#263238]">{val}</p>
           </div>
         ))}
       </div>
 
       {/* Budget Bar */}
-      <div className="glass-card p-6">
+      <div className="glass-card p-5 lg:p-6">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <h3 className="text-white font-bold">Aylık Bütçe</h3>
-            <p className="text-gray-500 text-xs mt-0.5">Limit: {fmt(budget?.monthlyLimit || 0)}</p>
+            <h3 className="text-[#263238] font-bold">Aylık Bütçe</h3>
+            <p className="text-[#78909C] text-xs mt-0.5">Limit: {fmt(budget?.monthlyLimit || 0)}</p>
           </div>
           <div className="text-right">
-            <span className={`text-2xl font-black ${pct >= 90 ? 'text-rose-400' : pct >= 75 ? 'text-amber-400' : 'text-emerald-400'}`}>
+            <span className={`text-2xl font-black ${pct >= 90 ? 'text-red-500' : pct >= 75 ? 'text-[#FFC107]' : 'text-[#2E7D32]'}`}>
               %{pct.toFixed(0)}
             </span>
-            <p className="text-gray-500 text-xs">kullanıldı</p>
+            <p className="text-[#78909C] text-xs">kullanıldı</p>
           </div>
         </div>
-        <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
+        <div className="h-3 bg-[#E8F5E9] rounded-full overflow-hidden border border-[#C8E6C9]">
           <div className={`h-full ${pctColor} rounded-full transition-all duration-1000`}
                style={{ width: `${Math.min(100, pct)}%` }} />
         </div>
-        <div className="flex justify-between text-xs text-gray-500 mt-2">
-          <span>Harcanan: <span className="text-gray-300">{fmt(budget?.totalExpenses || 0)}</span></span>
-          <span>Kalan: <span className={budget?.remaining >= 0 ? 'text-emerald-400' : 'text-rose-400'}>{fmt(budget?.remaining || 0)}</span></span>
+        <div className="flex justify-between text-xs text-[#78909C] mt-2">
+          <span>Harcanan: <span className="text-[#263238] font-medium">{fmt(budget?.totalExpenses || 0)}</span></span>
+          <span>Kalan: <span className={budget?.remaining >= 0 ? 'text-[#2E7D32] font-medium' : 'text-red-500 font-medium'}>{fmt(budget?.remaining || 0)}</span></span>
         </div>
       </div>
 
       {/* Recent Transactions */}
-      <div className="glass-card p-6">
+      <div className="glass-card p-5 lg:p-6">
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-white font-bold">Son İşlemler</h3>
-          <Link to="/transactions" className="text-purple-400 hover:text-purple-300 text-xs flex items-center gap-1 transition-colors">
+          <h3 className="text-[#263238] font-bold">Son İşlemler</h3>
+          <Link to="/transactions" className="text-[#2E7D32] hover:text-[#1B5E20] text-xs flex items-center gap-1 transition-colors font-medium">
             Tümünü gör <ArrowRight size={12} />
           </Link>
         </div>
         <div className="space-y-1">
           {txs.length === 0 ? (
-            <p className="text-gray-600 text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
+            <p className="text-[#90A4AE] text-center py-6 text-sm">Henüz işlem yok. Yeni bir işlem ekleyin!</p>
           ) : txs.map(tx => (
-            <div key={tx.id} className="flex items-center justify-between py-2.5 border-b border-gray-800/40 last:border-0 hover:bg-white/2 rounded-lg px-2 -mx-2 transition-colors">
+            <div key={tx.id} className="flex items-center justify-between py-2.5 border-b border-[#E8F5E9] last:border-0 hover:bg-[#F9FBF5] rounded-lg px-2 -mx-2 transition-colors">
               <div className="flex items-center gap-3">
                 <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base flex-shrink-0 ${
-                  tx.type === 'income' ? 'bg-emerald-500/15' : tx.subtype === 'luxury' ? 'bg-orange-500/15' : 'bg-rose-500/15'
+                  tx.type === 'income' ? 'bg-emerald-100' : tx.subtype === 'luxury' ? 'bg-amber-100' : 'bg-red-100'
                 }`}>
                   {CAT_ICONS[tx.category] || (tx.type === 'income' ? '💰' : '💳')}
                 </div>
                 <div>
-                  <p className="text-white text-sm font-medium leading-tight">{tx.description}</p>
-                  <p className="text-gray-500 text-xs mt-0.5">{tx.category} • {fmtDate(tx.date)}</p>
+                  <p className="text-[#263238] text-sm font-medium leading-tight">{tx.description}</p>
+                  <p className="text-[#78909C] text-xs mt-0.5">{tx.category} • {fmtDate(tx.date)}</p>
                 </div>
               </div>
-              <span className={`font-bold text-sm flex-shrink-0 ${tx.type === 'income' ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <span className={`font-bold text-sm flex-shrink-0 ${tx.type === 'income' ? 'text-[#2E7D32]' : 'text-red-500'}`}>
                 {tx.type === 'income' ? '+' : '-'}{fmt(tx.amount)}
               </span>
             </div>

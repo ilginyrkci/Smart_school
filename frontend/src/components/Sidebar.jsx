@@ -23,19 +23,18 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-gray-800/50"
-           style={{ background: 'linear-gradient(180deg, #0a0a1a 0%, #0f0f2a 100%)' }}>
+    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] bg-white">
 
       {/* Logo */}
-      <div className="p-6 border-b border-gray-800/50">
+      <div className="p-6 border-b border-[#C8E6C9]">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/40"
-               style={{ background: 'linear-gradient(135deg, #7c3aed, #6366f1)' }}>
+          <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-md"
+               style={{ background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' }}>
             <TrendingUp size={20} className="text-white" />
           </div>
           <div>
-            <h1 className="text-sm font-bold text-white leading-tight">Akıllı Harçlık</h1>
-            <p className="text-xs text-purple-400 font-medium">Finans Koçu</p>
+            <h1 className="text-sm font-bold text-[#263238] leading-tight">Akıllı Harçlık</h1>
+            <p className="text-xs font-medium" style={{ color: '#2E7D32' }}>Finans Koçu</p>
           </div>
         </div>
       </div>
@@ -46,17 +45,18 @@ export default function Sidebar() {
           <NavLink key={to} to={to} id={id} end
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
-                isActive ? 'text-white border border-purple-500/40 shadow-sm shadow-purple-500/10'
-                         : 'text-gray-400 hover:text-white hover:bg-white/5'
+                isActive
+                  ? 'text-white shadow-sm'
+                  : 'text-[#546E7A] hover:text-[#2E7D32] hover:bg-[#E8F5E9]'
               }`
             }
-            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, rgba(124,58,237,0.25), rgba(99,102,241,0.15))' } : {}}
+            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' } : {}}
           >
             {({ isActive }) => (
               <>
-                <Icon size={18} className={isActive ? 'text-purple-400' : 'text-gray-500 group-hover:text-gray-300'} />
+                <Icon size={18} className={isActive ? 'text-white' : 'text-[#78909C] group-hover:text-[#2E7D32]'} />
                 {label}
-                {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-purple-400" />}
+                {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white opacity-70" />}
               </>
             )}
           </NavLink>
@@ -64,28 +64,26 @@ export default function Sidebar() {
       </nav>
 
       {/* User Footer */}
-      <div className="p-3 border-t border-gray-800/50 space-y-1">
-        {/* Profile Link */}
+      <div className="p-3 border-t border-[#C8E6C9] space-y-1">
         <NavLink to="/profile" id="nav-profile"
           className={({ isActive }) =>
             `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group cursor-pointer ${
-              isActive ? 'bg-purple-500/10 text-white' : 'hover:bg-white/5'
+              isActive ? 'bg-[#E8F5E9]' : 'hover:bg-[#E8F5E9]'
             }`
           }>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black text-white flex-shrink-0"
-               style={{ background: `linear-gradient(135deg, ${user?.avatarColor || '#7c3aed'}, ${(user?.avatarColor || '#7c3aed') + '99'})` }}>
+               style={{ background: `linear-gradient(135deg, ${user?.avatarColor || '#2E7D32'}, ${(user?.avatarColor || '#2E7D32') + '99'})` }}>
             {initials(user?.displayName)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white truncate">{user?.displayName || 'Kullanıcı'}</p>
-            <p className="text-xs text-gray-500 truncate">@{user?.username}</p>
+            <p className="text-sm font-semibold text-[#263238] truncate">{user?.displayName || 'Kullanıcı'}</p>
+            <p className="text-xs text-[#78909C] truncate">@{user?.username}</p>
           </div>
-          <Settings size={14} className="text-gray-600 group-hover:text-gray-400 transition-colors flex-shrink-0" />
+          <Settings size={14} className="text-[#90A4AE] group-hover:text-[#2E7D32] transition-colors flex-shrink-0" />
         </NavLink>
 
-        {/* Logout */}
         <button id="btn-logout" onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-rose-400 hover:bg-rose-500/10 transition-all text-sm font-medium">
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#546E7A] hover:text-rose-600 hover:bg-rose-50 transition-all text-sm font-medium">
           <LogOut size={16} />
           Çıkış Yap
         </button>
