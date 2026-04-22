@@ -77,31 +77,31 @@ export default function Analytics() {
   const totalCats = cats.reduce((s, c) => s + c.amount, 0)
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-3xl font-black text-white">Finansal Analiz</h2>
-        <p className="text-gray-400 text-sm mt-1">Harcamalarınızı görselleştirin ve anlayın</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-white">Finansal Analiz</h2>
+        <p className="text-gray-400 text-xs lg:text-sm mt-1">Harcamalarınızı görselleştirin ve anlayın</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Doughnut */}
-        <div className="glass-card p-6">
+        <div className="glass-card p-5">
           <h3 className="text-white font-bold mb-4">Kategori Dağılımı</h3>
-          <div className="h-56 flex items-center justify-center">
+          <div className="h-48 lg:h-56 flex items-center justify-center">
             {cats.length === 0
               ? <p className="text-gray-600">Henüz harcama verisi yok</p>
               : <Doughnut data={donutData} options={{
                   responsive: true, maintainAspectRatio: false, cutout: '65%',
-                  plugins: { legend: { position: 'right', labels: { color: '#9ca3af', font: { size: 11 }, padding: 10 } } }
+                  plugins: { legend: { position: 'bottom', labels: { color: '#9ca3af', font: { size: 10 }, padding: 8 } } }
                 }} />
             }
           </div>
         </div>
 
         {/* Category Bars */}
-        <div className="glass-card p-6">
+        <div className="glass-card p-5">
           <h3 className="text-white font-bold mb-4">Harcama Kırılımı</h3>
-          <div className="space-y-3 overflow-y-auto max-h-56">
+          <div className="space-y-3 overflow-y-auto max-h-48 lg:max-h-56">
             {cats.slice(0, 7).map((cat, i) => {
               const pct = totalCats > 0 ? (cat.amount / totalCats) * 100 : 0
               return (
@@ -125,17 +125,17 @@ export default function Analytics() {
       </div>
 
       {/* Bar Chart */}
-      <div className="glass-card p-6">
-        <h3 className="text-white font-bold mb-4">Aylık Gelir / Gider Karşılaştırması</h3>
-        <div className="h-72">
+      <div className="glass-card p-5">
+        <h3 className="text-white font-bold mb-4">Aylık Gelir / Gider Kıyasla</h3>
+        <div className="h-56 lg:h-72">
           <Bar data={barData} options={chartBase} />
         </div>
       </div>
 
       {/* Line Chart */}
-      <div className="glass-card p-6">
+      <div className="glass-card p-5">
         <h3 className="text-white font-bold mb-4">Net Tasarruf Trendi</h3>
-        <div className="h-60">
+        <div className="h-48 lg:h-60">
           <Line data={lineData} options={chartBase} />
         </div>
       </div>

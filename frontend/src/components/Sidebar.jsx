@@ -23,7 +23,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-64 flex-shrink-0 flex flex-col h-screen border-r border-gray-800/50"
+    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-gray-800/50"
            style={{ background: 'linear-gradient(180deg, #0a0a1a 0%, #0f0f2a 100%)' }}>
 
       {/* Logo */}

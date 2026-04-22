@@ -33,10 +33,10 @@ export default function Coach() {
   const scoreColor = data.score >= 80 ? '#10b981' : data.score >= 60 ? '#3b82f6' : data.score >= 40 ? '#f59e0b' : '#ef4444'
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-3xl font-black text-white">Finans Koçu 🧠</h2>
-        <p className="text-gray-400 text-sm mt-1">Kişiselleştirilmiş finansal analiz ve tavsiyeler</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-white">Finans Koçu 🧠</h2>
+        <p className="text-gray-400 text-xs lg:text-sm mt-1">Kişisel finansal analiz ve tavsiyeler</p>
       </div>
 
       {/* Score panel */}
@@ -57,12 +57,12 @@ export default function Coach() {
           </div>
 
           {/* Stats */}
-          <div className="flex-1 space-y-5">
+          <div className="flex-1 space-y-4 w-full">
             <div className="flex items-center gap-3">
               <span className="text-gray-400 text-sm">Finansal Notun:</span>
-              <span className={`text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-white'}`}>{data.grade}</span>
+              <span className={`text-4xl lg:text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-white'}`}>{data.grade}</span>
             </div>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[
                 ['Toplam Gelir',   fmt(data.totalIncome),  'text-emerald-400'],
                 ['Toplam Gider',   fmt(data.totalExpenses),'text-rose-400'],

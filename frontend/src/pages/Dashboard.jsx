@@ -60,12 +60,12 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-black text-white">Dashboard</h2>
-          <p className="text-gray-400 text-sm mt-1">{new Date().toLocaleDateString('tr-TR', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-white">Dashboard</h2>
+          <p className="text-gray-400 text-xs lg:text-sm mt-1">{new Date().toLocaleDateString('tr-TR', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}</p>
         </div>
         <button id="btn-add-transaction" onClick={() => setShowAdd(true)} className="btn-primary">
           <Plus size={16} /> Yeni İşlem

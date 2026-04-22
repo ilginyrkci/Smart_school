@@ -87,15 +87,15 @@ export default function Profile() {
   }
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in max-w-2xl">
+    <div className="p-4 lg:p-6 space-y-5 animate-fade-in max-w-2xl">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <Link to="/" className="p-2 text-gray-500 hover:text-white hover:bg-gray-800 rounded-xl transition-all">
           <ArrowLeft size={18} />
         </Link>
         <div>
-          <h2 className="text-3xl font-black text-white">Profil Ayarları</h2>
-          <p className="text-gray-400 text-sm mt-1">Hesap bilgilerinizi düzenleyin</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-white">Profil Ayarları</h2>
+          <p className="text-gray-400 text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
         </div>
       </div>
 
@@ -118,14 +118,14 @@ export default function Profile() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-900/60 border border-gray-800/50 rounded-xl p-1 w-fit flex-wrap">
+      <div className="flex gap-1 bg-gray-900/60 border border-gray-800/50 rounded-xl p-1 flex-wrap">
         {[
           ['profile',  '👤 Profil'],
           ['username', '🔤 Kullanıcı Adı'],
           ['password', '🔒 Şifre'],
         ].map(([val, label]) => (
           <button key={val} onClick={() => switchTab(val)}
-            className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+            className={`px-3 py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all flex-1 ${
               tab === val ? 'text-white shadow-md' : 'text-gray-400 hover:text-white'
             }`}
             style={tab === val ? { background: 'linear-gradient(135deg,#7c3aed,#6366f1)' } : {}}>

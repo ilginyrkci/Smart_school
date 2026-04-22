@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
-import Sidebar from './components/Sidebar'
-import Dashboard from './pages/Dashboard'
+import Sidebar    from './components/Sidebar'
+import BottomNav  from './components/BottomNav'
+import Dashboard  from './pages/Dashboard'
 import Transactions from './pages/Transactions'
-import Analytics from './pages/Analytics'
-import Coach from './pages/Coach'
-import Budget from './pages/Budget'
-import LoginPage from './pages/LoginPage'
+import Analytics  from './pages/Analytics'
+import Coach      from './pages/Coach'
+import Budget     from './pages/Budget'
+import LoginPage  from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 
 function AppLayout() {
@@ -25,8 +26,12 @@ function AppLayout() {
 
   return (
     <div className="flex h-screen bg-gray-950 text-white overflow-hidden">
+      {/* Sidebar — sadece lg+ ekranlarda */}
       <Sidebar />
-      <main className="flex-1 overflow-y-auto" style={{ background: 'radial-gradient(ellipse at top left, #1a0533 0%, #080812 50%)' }}>
+
+      {/* Ana içerik */}
+      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0"
+            style={{ background: 'radial-gradient(ellipse at top left, #1a0533 0%, #080812 50%)' }}>
         <Routes>
           <Route path="/"             element={<Dashboard />} />
           <Route path="/transactions" element={<Transactions />} />
@@ -37,6 +42,9 @@ function AppLayout() {
           <Route path="*"             element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      {/* Alt nav — sadece mobil */}
+      <BottomNav />
     </div>
   )
 }

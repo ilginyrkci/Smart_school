@@ -53,15 +53,15 @@ export default function Budget() {
     : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' }
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-3xl font-black text-white">Bütçe Yönetimi</h2>
-        <p className="text-gray-400 text-sm mt-1">Aylık harcama limitinizi takip edin ve düzenleyin</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-white">Bütçe Yönetimi</h2>
+        <p className="text-gray-400 text-xs lg:text-sm mt-1">Aylık harcama limitinizi takip edin ve düzenleyin</p>
       </div>
 
       {/* Main Card */}
       <div className="glass-card p-6">
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
           <div>
             <p className="text-gray-400 text-sm mb-1">Aylık Bütçe Limiti</p>
             {editing ? (
@@ -92,9 +92,9 @@ export default function Budget() {
               </div>
             )}
           </div>
-          <div className="text-right">
+          <div className="text-right flex-shrink-0">
             <p className="text-gray-400 text-sm mb-1">Kullanılan</p>
-            <p className="text-4xl font-black" style={{ color: pctColor }}>%{pct.toFixed(0)}</p>
+            <p className="text-3xl lg:text-4xl font-black" style={{ color: pctColor }}>%{pct.toFixed(0)}</p>
           </div>
         </div>
 

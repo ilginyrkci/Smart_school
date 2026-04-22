@@ -41,12 +41,12 @@ export default function Transactions() {
     .filter(t => search ? (t.description + t.category).toLowerCase().includes(search.toLowerCase()) : true)
 
   return (
-    <div className="p-6 space-y-5 animate-fade-in">
+    <div className="p-4 lg:p-6 space-y-4 animate-fade-in">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-black text-white">İşlemler</h2>
-          <p className="text-gray-400 text-sm mt-1">{filtered.length} işlem listeleniyor</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-white">İşlemler</h2>
+          <p className="text-gray-400 text-xs lg:text-sm mt-1">{filtered.length} işlem listeleniyor</p>
         </div>
         <button id="btn-add-new" onClick={() => setShowAdd(true)} className="btn-primary">
           <Plus size={16} /> Ekle
@@ -91,43 +91,41 @@ export default function Transactions() {
           <div className="divide-y divide-gray-800/40">
             {filtered.map(tx => (
               <div key={tx.id} id={`tx-${tx.id}`}
-                className="flex items-center justify-between px-5 py-4 hover:bg-white/[0.02] transition-colors group">
-                <div className="flex items-center gap-4">
-                  <div className={`w-11 h-11 rounded-2xl flex items-center justify-center text-lg flex-shrink-0 ${
+                className="flex items-center justify-between px-4 py-3 hover:bg-white/[0.02] transition-colors group">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className={`w-9 h-9 lg:w-11 lg:h-11 rounded-xl lg:rounded-2xl flex items-center justify-center text-base lg:text-lg flex-shrink-0 ${
                     tx.type === 'income' ? 'bg-emerald-500/15' : tx.subtype === 'luxury' ? 'bg-orange-500/15' : 'bg-rose-500/15'
                   }`}>
                     {CAT_ICONS[tx.category] || (tx.type === 'income' ? '💰' : '💳')}
                   </div>
-                  <div>
-                    <p className="text-white text-sm font-semibold">{tx.description}</p>
-                    <div className="flex items-center gap-2 mt-0.5">
+                  <div className="min-w-0">
+                    <p className="text-white text-sm font-semibold truncate">{tx.description}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                       <span className="text-gray-500 text-xs">{tx.category}</span>
                       {tx.subtype && (
-                        <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                        <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium ${
                           tx.subtype === 'luxury' ? 'bg-orange-500/15 text-orange-400' : 'bg-blue-500/15 text-blue-400'
                         }`}>
                           {tx.subtype === 'luxury' ? 'Lüks' : 'Zorunlu'}
                         </span>
                       )}
-                      <span className="text-gray-700 text-xs">•</span>
-                      <span className="text-gray-500 text-xs">{fmtDate(tx.date)}</span>
+                      <span className="text-gray-500 text-xs hidden sm:inline">{fmtDate(tx.date)}</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-1.5 flex-shrink-0 ml-2">
                   <span className={`font-bold text-sm ${tx.type === 'income' ? 'text-emerald-400' : 'text-rose-400'}`}>
                     {tx.type === 'income' ? '+' : '-'}{fmt(tx.amount)}
                   </span>
                   <button onClick={() => setEditTx(tx)} id={`edit-tx-${tx.id}`}
-                    className="opacity-0 group-hover:opacity-100 text-gray-600 hover:text-violet-400 transition-all p-1.5 rounded-lg hover:bg-violet-500/10">
+                    className="opacity-0 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 text-gray-600 hover:text-violet-400 transition-all p-1.5 rounded-lg hover:bg-violet-500/10">
                     <Pencil size={14} />
                   </button>
                   <button onClick={() => handleDelete(tx.id)} id={`delete-tx-${tx.id}`}
-                    className="opacity-0 group-hover:opacity-100 text-gray-600 hover:text-rose-400 transition-all p-1.5 rounded-lg hover:bg-rose-500/10">
+                    className="opacity-0 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 text-gray-600 hover:text-rose-400 transition-all p-1.5 rounded-lg hover:bg-rose-500/10">
                     <Trash2 size={14} />
                   </button>
                 </div>
-              </div>
             ))}
           </div>
         )}
