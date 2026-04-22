@@ -2,18 +2,19 @@ import { useState, useEffect } from 'react'
 import { coachService } from '../services/api'
 
 const LEVEL_STYLES = {
-  danger:  { bg:'bg-red-50',      border:'border-red-200',    title:'text-red-700',     bar:'bg-red-500' },
-  warning: { bg:'bg-amber-50',    border:'border-amber-200',  title:'text-amber-700',   bar:'bg-[#FFC107]' },
-  success: { bg:'bg-[#E8F5E9]',   border:'border-[#A5D6A7]',  title:'text-[#2E7D32]',   bar:'bg-[#2E7D32]' },
-  info:    { bg:'bg-blue-50',     border:'border-blue-200',   title:'text-blue-700',    bar:'bg-blue-500' },
-  tip:     { bg:'bg-[#E8F5E9]',   border:'border-[#C8E6C9]',  title:'text-[#2E7D32]',   bar:'bg-[#66BB6A]' },
+  danger:  { bg:'bg-red-50 dark:bg-red-900/20',      border:'border-red-200 dark:border-red-800',     title:'text-red-700 dark:text-red-400' },
+  warning: { bg:'bg-amber-50 dark:bg-amber-900/20',  border:'border-amber-200 dark:border-amber-800',  title:'text-amber-700 dark:text-amber-400' },
+  success: { bg:'bg-[#E8F5E9] dark:bg-[#1f3a1f]',   border:'border-[#A5D6A7] dark:border-[#3d6a3d]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
+  info:    { bg:'bg-blue-50 dark:bg-blue-900/20',    border:'border-blue-200 dark:border-blue-800',    title:'text-blue-700 dark:text-blue-400' },
+  tip:     { bg:'bg-[#E8F5E9] dark:bg-[#1f3a1f]',   border:'border-[#C8E6C9] dark:border-[#2d4a2d]',  title:'text-[#2E7D32] dark:text-[#66BB6A]' },
 }
-const GRADE_COLOR = { A:'text-[#2E7D32]', B:'text-blue-600', C:'text-amber-600', D:'text-orange-600', F:'text-red-600' }
+const GRADE_COLOR = { A:'text-[#2E7D32] dark:text-[#66BB6A]', B:'text-blue-600 dark:text-blue-400', C:'text-amber-600 dark:text-amber-400', D:'text-orange-600 dark:text-orange-400', F:'text-red-600 dark:text-red-400' }
 const fmt = (n) => new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(n)
 
 export default function Coach() {
   const [data, setData]       = useState(null)
   const [loading, setLoading] = useState(true)
+  const isDark = document.documentElement.classList.contains('dark')
 
   useEffect(() => {
     coachService.getAdvice()
@@ -31,48 +32,48 @@ export default function Coach() {
   const R = 52, C = 2 * Math.PI * R
   const dash = C - (data.score / 100) * C
   const scoreColor = data.score >= 80 ? '#2E7D32' : data.score >= 60 ? '#66BB6A' : data.score >= 40 ? '#FFC107' : '#ef4444'
+  const trackColor = isDark ? '#2d4a2d' : '#C8E6C9'
+  const scorePanelBg = isDark ? '#1f3a1f' : '#E8F5E9'
+  const scorePanelBorder = isDark ? '#3d6a3d' : '#A5D6A7'
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-2xl lg:text-3xl font-black text-[#263238]">Finans Koçu 🧠</h2>
-        <p className="text-[#546E7A] text-xs lg:text-sm mt-1">Kişisel finansal analiz ve tavsiyeler</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-[#263238] dark:text-[#E8F5E9]">Finans Koçu 🧠</h2>
+        <p className="text-[#546E7A] dark:text-[#A5D6A7] text-xs lg:text-sm mt-1">Kişisel finansal analiz ve tavsiyeler</p>
       </div>
 
-      {/* Score panel */}
-      <div className="glass-card p-6 bg-[#E8F5E9]" style={{ borderColor: '#A5D6A7' }}>
+      <div className="glass-card p-6" style={{ backgroundColor: scorePanelBg, borderColor: scorePanelBorder }}>
         <div className="flex flex-col md:flex-row items-center gap-8">
-          {/* Circle */}
           <div className="relative flex-shrink-0">
             <svg width="140" height="140" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r={R} fill="none" stroke="#C8E6C9" strokeWidth="10" />
+              <circle cx="60" cy="60" r={R} fill="none" stroke={trackColor} strokeWidth="10" />
               <circle cx="60" cy="60" r={R} fill="none" stroke={scoreColor} strokeWidth="10"
                 strokeLinecap="round" strokeDasharray={C} strokeDashoffset={dash}
                 style={{ transform:'rotate(-90deg)', transformOrigin:'50% 50%', transition:'stroke-dashoffset 1.2s ease' }} />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-4xl font-black text-[#263238]">{data.score}</span>
-              <span className="text-[#78909C] text-xs">/ 100</span>
+              <span className="text-4xl font-black text-[#263238] dark:text-[#E8F5E9]">{data.score}</span>
+              <span className="text-[#78909C] dark:text-[#81C784] text-xs">/ 100</span>
             </div>
           </div>
 
-          {/* Stats */}
           <div className="flex-1 space-y-4 w-full">
             <div className="flex items-center gap-3">
-              <span className="text-[#546E7A] text-sm">Finansal Notun:</span>
-              <span className={`text-4xl lg:text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-[#263238]'}`}>{data.grade}</span>
+              <span className="text-[#546E7A] dark:text-[#A5D6A7] text-sm">Finansal Notun:</span>
+              <span className={`text-4xl lg:text-5xl font-black ${GRADE_COLOR[data.grade] || 'text-[#263238] dark:text-[#E8F5E9]'}`}>{data.grade}</span>
             </div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[
-                ['Toplam Gelir',   fmt(data.totalIncome),  'text-[#2E7D32]'],
-                ['Toplam Gider',   fmt(data.totalExpenses),'text-red-600'],
-                ['Net Tasarruf',   fmt(data.netSavings),   data.netSavings >= 0 ? 'text-blue-600' : 'text-red-600'],
-                ['Tasarruf Oranı', `%${data.savingsRate}`, 'text-[#2E7D32]'],
-                ['Lüks Harcama',   `%${data.luxuryRate}`,  'text-amber-600'],
-                ['Bütçe Kullanım', `%${data.budgetUsage}`, data.budgetUsage > 90 ? 'text-red-600' : 'text-[#2E7D32]'],
+                ['Toplam Gelir',   fmt(data.totalIncome),  'text-[#2E7D32] dark:text-[#66BB6A]'],
+                ['Toplam Gider',   fmt(data.totalExpenses),'text-red-600 dark:text-red-400'],
+                ['Net Tasarruf',   fmt(data.netSavings),   data.netSavings >= 0 ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'],
+                ['Tasarruf Oranı', `%${data.savingsRate}`, 'text-[#2E7D32] dark:text-[#66BB6A]'],
+                ['Lüks Harcama',   `%${data.luxuryRate}`,  'text-amber-600 dark:text-amber-400'],
+                ['Bütçe Kullanım', `%${data.budgetUsage}`, data.budgetUsage > 90 ? 'text-red-600 dark:text-red-400' : 'text-[#2E7D32] dark:text-[#66BB6A]'],
               ].map(([label, val, color]) => (
                 <div key={label}>
-                  <p className="text-[#78909C] text-xs">{label}</p>
+                  <p className="text-[#78909C] dark:text-[#81C784] text-xs">{label}</p>
                   <p className={`font-bold text-sm ${color}`}>{val}</p>
                 </div>
               ))}
@@ -81,9 +82,8 @@ export default function Coach() {
         </div>
       </div>
 
-      {/* Advices */}
       <div className="space-y-3">
-        <h3 className="text-[#263238] font-bold text-lg">Koç Tavsiyeleri</h3>
+        <h3 className="text-[#263238] dark:text-[#E8F5E9] font-bold text-lg">Koç Tavsiyeleri</h3>
         {data.advices.map((a, i) => {
           const s = LEVEL_STYLES[a.level] || LEVEL_STYLES.tip
           return (
@@ -93,7 +93,7 @@ export default function Coach() {
               <span className="text-2xl flex-shrink-0 mt-0.5">{a.icon}</span>
               <div>
                 <p className={`font-bold text-sm ${s.title}`}>{a.title}</p>
-                <p className="text-[#546E7A] text-sm mt-0.5 leading-relaxed">{a.message}</p>
+                <p className="text-[#546E7A] dark:text-[#A5D6A7] text-sm mt-0.5 leading-relaxed">{a.message}</p>
               </div>
             </div>
           )

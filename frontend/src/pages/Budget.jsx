@@ -12,11 +12,8 @@ export default function Budget() {
   const [saving, setSaving] = useState(false)
 
   const load = async () => {
-    try {
-      const r = await budgetService.get()
-      setBudget(r.data)
-      setNewLimit(r.data.monthlyLimit.toString())
-    } catch (e) { console.error(e) }
+    try { const r = await budgetService.get(); setBudget(r.data); setNewLimit(r.data.monthlyLimit.toString()) }
+    catch (e) { console.error(e) }
     finally { setLoading(false) }
   }
   useEffect(() => { load() }, [])
@@ -47,102 +44,94 @@ export default function Budget() {
   ]
 
   const statusMsg = pct >= 90
-    ? { msg: '🚨 Bütçenizin sonuna yaklaştınız! Harcamaları acil azaltın.', cls: 'bg-red-50 border-red-200 text-red-700' }
+    ? { msg: '🚨 Bütçenizin sonuna yaklaştınız! Harcamaları acil azaltın.', cls: 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400' }
     : pct >= 75
-    ? { msg: '⚠️ Bütçenizin büyük kısmını kullandınız. Dikkatli devam edin.', cls: 'bg-amber-50 border-amber-200 text-amber-700' }
-    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#E8F5E9] border-[#A5D6A7] text-[#2E7D32]' }
+    ? { msg: '⚠️ Bütçenizin büyük kısmını kullandınız. Dikkatli devam edin.', cls: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400' }
+    : { msg: '✅ Bütçe durumunuz sağlıklı görünüyor. Tasarrufa devam!', cls: 'bg-[#E8F5E9] dark:bg-[#1f3a1f] border-[#A5D6A7] dark:border-[#3d6a3d] text-[#2E7D32] dark:text-[#66BB6A]' }
 
   return (
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in">
       <div>
-        <h2 className="text-2xl lg:text-3xl font-black text-[#263238]">Bütçe Yönetimi</h2>
-        <p className="text-[#546E7A] text-xs lg:text-sm mt-1">Aylık harcama limitinizi takip edin ve düzenleyin</p>
+        <h2 className="text-2xl lg:text-3xl font-black text-[#263238] dark:text-[#E8F5E9]">Bütçe Yönetimi</h2>
+        <p className="text-[#546E7A] dark:text-[#A5D6A7] text-xs lg:text-sm mt-1">Aylık harcama limitinizi takip edin ve düzenleyin</p>
       </div>
 
-      {/* Main Card */}
       <div className="glass-card p-5 lg:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
           <div>
-            <p className="text-[#546E7A] text-sm mb-1">Aylık Bütçe Limiti</p>
+            <p className="text-[#546E7A] dark:text-[#A5D6A7] text-sm mb-1">Aylık Bütçe Limiti</p>
             {editing ? (
               <div className="flex items-center gap-2 mt-2">
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#546E7A] text-sm">₺</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#546E7A] dark:text-[#A5D6A7] text-sm">₺</span>
                   <input id="input-budget-limit" type="number" value={newLimit}
                     onChange={e => setNewLimit(e.target.value)}
-                    className="bg-[#F1F8E9] border border-[#2E7D32] text-[#263238] rounded-xl pl-8 pr-4 py-2 text-xl font-bold w-44 focus:outline-none focus:ring-1 focus:ring-[#2E7D32]/50"
+                    className="bg-[#F1F8E9] dark:bg-[#1a2e1a] border border-[#2E7D32] text-[#263238] dark:text-[#E8F5E9] rounded-xl pl-8 pr-4 py-2 text-xl font-bold w-44 focus:outline-none"
                     autoFocus />
                 </div>
                 <button id="btn-save-budget" onClick={handleSave} disabled={saving}
-                  className="p-2.5 text-[#2E7D32] bg-[#E8F5E9] border border-[#A5D6A7] rounded-xl hover:bg-[#C8E6C9] transition-all">
+                  className="p-2.5 text-[#2E7D32] bg-[#E8F5E9] dark:bg-[#1f3a1f] border border-[#A5D6A7] dark:border-[#3d6a3d] rounded-xl hover:bg-[#C8E6C9] dark:hover:bg-[#2d4a2d] transition-all">
                   <Check size={16} />
                 </button>
                 <button id="btn-cancel-budget" onClick={() => setEditing(false)}
-                  className="p-2.5 text-[#546E7A] bg-[#F1F8E9] border border-[#C8E6C9] rounded-xl hover:bg-[#E8F5E9] transition-all">
+                  className="p-2.5 text-[#546E7A] dark:text-[#A5D6A7] bg-[#F1F8E9] dark:bg-[#1a2e1a] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-xl hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f] transition-all">
                   <X size={16} />
                 </button>
               </div>
             ) : (
               <div className="flex items-center gap-3 mt-1">
-                <p className="text-3xl font-black text-[#263238]">{fmt(budget.monthlyLimit)}</p>
+                <p className="text-3xl font-black text-[#263238] dark:text-[#E8F5E9]">{fmt(budget.monthlyLimit)}</p>
                 <button id="btn-edit-budget" onClick={() => setEditing(true)}
-                  className="p-1.5 text-[#78909C] hover:text-[#2E7D32] hover:bg-[#E8F5E9] rounded-lg transition-all">
+                  className="p-1.5 text-[#78909C] dark:text-[#81C784] hover:text-[#2E7D32] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f] rounded-lg transition-all">
                   <Edit3 size={14} />
                 </button>
               </div>
             )}
           </div>
           <div className="text-right flex-shrink-0">
-            <p className="text-[#546E7A] text-sm mb-1">Kullanılan</p>
+            <p className="text-[#546E7A] dark:text-[#A5D6A7] text-sm mb-1">Kullanılan</p>
             <p className="text-3xl lg:text-4xl font-black" style={{ color: pctColor }}>%{pct.toFixed(0)}</p>
           </div>
         </div>
 
-        <div className="h-5 bg-[#E8F5E9] rounded-full overflow-hidden mb-2 border border-[#C8E6C9]">
-          <div className={`h-full ${pctBg} rounded-full transition-all duration-1000`}
-               style={{ width: `${Math.min(100, pct)}%` }} />
+        <div className="h-5 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full overflow-hidden mb-2 border border-[#C8E6C9] dark:border-[#2d4a2d]">
+          <div className={`h-full ${pctBg} rounded-full transition-all duration-1000`} style={{ width: `${Math.min(100, pct)}%` }} />
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-[#546E7A]">Harcanan: <span className="text-[#263238] font-semibold">{fmt(budget.totalExpenses)}</span></span>
-          <span className="text-[#546E7A]">Kalan: <span className={`font-semibold ${budget.remaining >= 0 ? 'text-[#2E7D32]' : 'text-red-500'}`}>{fmt(budget.remaining)}</span></span>
+          <span className="text-[#546E7A] dark:text-[#A5D6A7]">Harcanan: <span className="text-[#263238] dark:text-[#E8F5E9] font-semibold">{fmt(budget.totalExpenses)}</span></span>
+          <span className="text-[#546E7A] dark:text-[#A5D6A7]">Kalan: <span className={`font-semibold ${budget.remaining >= 0 ? 'text-[#2E7D32] dark:text-[#66BB6A]' : 'text-red-500'}`}>{fmt(budget.remaining)}</span></span>
         </div>
       </div>
 
-      {/* Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {segments.map(seg => (
           <div key={seg.label} className="glass-card p-5">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xl">{seg.emoji}</span>
-              <p className="text-[#263238] font-semibold text-sm">{seg.label}</p>
+              <p className="text-[#263238] dark:text-[#E8F5E9] font-semibold text-sm">{seg.label}</p>
             </div>
-            <p className="text-2xl font-black text-[#263238] mb-1">{fmt(seg.amount)}</p>
-            <p className="text-[#78909C] text-xs mb-3">Bütçenin %{seg.pct.toFixed(0)}'i</p>
-            <div className="h-2 bg-[#E8F5E9] rounded-full border border-[#C8E6C9]">
-              <div className="h-full rounded-full transition-all duration-700"
-                   style={{ width: `${seg.pct}%`, backgroundColor: seg.color }} />
+            <p className="text-2xl font-black text-[#263238] dark:text-[#E8F5E9] mb-1">{fmt(seg.amount)}</p>
+            <p className="text-[#78909C] dark:text-[#81C784] text-xs mb-3">Bütçenin %{seg.pct.toFixed(0)}'i</p>
+            <div className="h-2 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-full border border-[#C8E6C9] dark:border-[#2d4a2d]">
+              <div className="h-full rounded-full transition-all duration-700" style={{ width: `${seg.pct}%`, backgroundColor: seg.color }} />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Status */}
-      <div className={`rounded-2xl p-4 border font-medium text-sm ${statusMsg.cls}`}>
-        {statusMsg.msg}
-      </div>
+      <div className={`rounded-2xl p-4 border font-medium text-sm ${statusMsg.cls}`}>{statusMsg.msg}</div>
 
-      {/* 50/30/20 */}
       <div className="glass-card p-5">
-        <h3 className="text-[#263238] font-bold mb-4">50 / 30 / 20 Kuralı Hedefi</h3>
+        <h3 className="text-[#263238] dark:text-[#E8F5E9] font-bold mb-4">50 / 30 / 20 Kuralı Hedefi</h3>
         <div className="space-y-3">
           {[
-            { label: 'İhtiyaçlar (%50)', target: budget.monthlyLimit * 0.5, color: '#3b82f6' },
-            { label: 'İstekler (%30)',   target: budget.monthlyLimit * 0.3, color: '#FFC107' },
-            { label: 'Tasarruf (%20)',   target: budget.monthlyLimit * 0.2, color: '#2E7D32' },
-          ].map(({ label, target, color }) => (
+            { label: 'İhtiyaçlar (%50)', target: budget.monthlyLimit * 0.5 },
+            { label: 'İstekler (%30)',   target: budget.monthlyLimit * 0.3 },
+            { label: 'Tasarruf (%20)',   target: budget.monthlyLimit * 0.2 },
+          ].map(({ label, target }) => (
             <div key={label} className="flex items-center justify-between text-sm">
-              <span className="text-[#546E7A]">{label}</span>
-              <span className="font-semibold text-[#263238]">{fmt(target)}</span>
+              <span className="text-[#546E7A] dark:text-[#A5D6A7]">{label}</span>
+              <span className="font-semibold text-[#263238] dark:text-[#E8F5E9]">{fmt(target)}</span>
             </div>
           ))}
         </div>

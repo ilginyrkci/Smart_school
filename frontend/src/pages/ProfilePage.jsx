@@ -118,7 +118,7 @@ export default function Profile() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-900/60 border border-gray-800/50 rounded-xl p-1 flex-wrap">
+      <div className="flex gap-1 bg-[#F1F8E9] dark:bg-[#0d1a0d] border border-[#C8E6C9] dark:border-[#2d4a2d] rounded-xl p-1 flex-wrap">
         {[
           ['profile',  '👤 Profil'],
           ['username', '🔤 Kullanıcı Adı'],
@@ -126,9 +126,9 @@ export default function Profile() {
         ].map(([val, label]) => (
           <button key={val} onClick={() => switchTab(val)}
             className={`px-3 py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all flex-1 ${
-              tab === val ? 'text-white shadow-md' : 'text-gray-400 hover:text-white'
+              tab === val ? 'text-white shadow-md' : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32]'
             }`}
-            style={tab === val ? { background: 'linear-gradient(135deg,#7c3aed,#6366f1)' } : {}}>
+            style={tab === val ? { background: 'linear-gradient(135deg,#2E7D32,#66BB6A)' } : {}}>
             {label}
           </button>
         ))}
@@ -152,9 +152,9 @@ export default function Profile() {
       {tab === 'profile' && (
         <form onSubmit={handleProfileSave} className="glass-card p-6 space-y-5">
           <div>
-            <label className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
+            <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
             <div className="relative">
-              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
+              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
               <input id="input-profile-name" type="text" value={profileForm.displayName}
                 onChange={e => setProfileForm(p => ({ ...p, displayName: e.target.value }))}
                 placeholder="Adınız Soyadınız" className="input-field pl-10" />
@@ -162,9 +162,9 @@ export default function Profile() {
           </div>
 
           <div>
-            <label className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
+            <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
             <div className="relative">
-              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
+              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
               <input id="input-profile-email" type="email" value={profileForm.email}
                 onChange={e => setProfileForm(p => ({ ...p, email: e.target.value }))}
                 placeholder="email@example.com" className="input-field pl-10" />
@@ -172,7 +172,7 @@ export default function Profile() {
           </div>
 
           <div>
-            <label className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1.5 flex items-center gap-2">
+            <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 flex items-center gap-2">
               <Palette size={12} /> Avatar Rengi
             </label>
             <div className="flex flex-wrap gap-3 mt-2">
@@ -180,7 +180,7 @@ export default function Profile() {
                 <button key={val} type="button" title={label}
                   onClick={() => setProfileForm(p => ({ ...p, avatarColor: val }))}
                   className={`w-9 h-9 rounded-xl transition-all hover:scale-110 ${
-                    profileForm.avatarColor === val ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110' : ''
+                    profileForm.avatarColor === val ? 'ring-2 ring-[#2E7D32] dark:ring-[#66BB6A] ring-offset-2 ring-offset-white dark:ring-offset-[#1a2e1a] scale-110' : ''
                   }`}
                   style={{ background: `linear-gradient(135deg, ${val}, ${val}88)` }} />
               ))}
@@ -199,38 +199,27 @@ export default function Profile() {
       {/* ─── Tab: Kullanıcı Adı ─── */}
       {tab === 'username' && (
         <form onSubmit={handleUsernameChange} className="glass-card p-6 space-y-5">
-          {/* Mevcut kullanıcı adı */}
-          <div className="p-4 bg-gray-800/60 rounded-2xl">
-            <p className="text-gray-500 text-xs font-semibold uppercase tracking-wide mb-1">Mevcut Kullanıcı Adı</p>
-            <p className="text-white font-bold text-lg">@{user?.username}</p>
+          <div className="p-4 bg-[#E8F5E9] dark:bg-[#1f3a1f] rounded-2xl border border-[#C8E6C9] dark:border-[#2d4a2d]">
+            <p className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1">Mevcut Kullanıcı Adı</p>
+            <p className="text-[#263238] dark:text-[#E8F5E9] font-bold text-lg">@{user?.username}</p>
           </div>
-
-          {/* Bilgi notu */}
-          <div className="flex items-start gap-3 p-4 bg-blue-500/8 border border-blue-500/20 rounded-2xl">
-            <AlertCircle size={16} className="text-blue-400 flex-shrink-0 mt-0.5" />
-            <p className="text-blue-300 text-sm leading-relaxed">
-              Sadece küçük harf, rakam ve alt çizgi (<span className="font-mono text-blue-200">_</span>) kullanabilirsiniz. Min. 3, max. 30 karakter.
+          <div className="flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl">
+            <AlertCircle size={16} className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+            <p className="text-blue-700 dark:text-blue-400 text-sm leading-relaxed">
+              Sadece küçük harf, rakam ve alt çizgi (<span className="font-mono">_</span>) kullanabilirsiniz. Min. 3, max. 30 karakter.
             </p>
           </div>
 
           <div>
-            <label className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1.5 block">
-              Yeni Kullanıcı Adı
-            </label>
+            <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Yeni Kullanıcı Adı</label>
             <div className="relative">
-              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
-              <input
-                id="input-new-username"
-                type="text"
-                value={newUsername}
+              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+              <input id="input-new-username" type="text" value={newUsername}
                 onChange={e => setNewUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
-                placeholder="yeni_kullanici_adi"
-                className="input-field pl-10 font-mono"
-                maxLength={30}
-              />
+                placeholder="yeni_kullanici_adi" className="input-field pl-10 font-mono" maxLength={30} />
             </div>
             {newUsername && (
-              <p className={`text-xs mt-1.5 flex items-center gap-1 ${newUsername.length >= 3 ? 'text-emerald-500' : 'text-gray-500'}`}>
+              <p className={`text-xs mt-1.5 flex items-center gap-1 ${newUsername.length >= 3 ? 'text-[#2E7D32] dark:text-[#66BB6A]' : 'text-[#78909C] dark:text-[#81C784]'}`}>
                 {newUsername.length >= 3 ? <CheckCircle size={11} /> : <AlertCircle size={11} />}
                 {newUsername.length}/30 karakter{newUsername.length < 3 && ' (min. 3)'}
               </p>
@@ -251,26 +240,24 @@ export default function Profile() {
       {tab === 'password' && (
         <form onSubmit={handlePasswordSave} className="glass-card p-6 space-y-5">
           {[
-            { id:'input-old-pass',     key:'oldPassword',     label:'Mevcut Şifre',      show:showOld, toggle:()=>setShowOld(!showOld) },
-            { id:'input-new-pass',     key:'newPassword',     label:'Yeni Şifre',         show:showNew, toggle:()=>setShowNew(!showNew) },
-            { id:'input-confirm-pass', key:'confirmPassword', label:'Yeni Şifre Tekrar',  show:showNew, toggle:()=>setShowNew(!showNew) },
+            { id:'input-old-pass',     key:'oldPassword',     label:'Mevcut Şifre',     show:showOld, toggle:()=>setShowOld(!showOld) },
+            { id:'input-new-pass',     key:'newPassword',     label:'Yeni Şifre',        show:showNew, toggle:()=>setShowNew(!showNew) },
+            { id:'input-confirm-pass', key:'confirmPassword', label:'Yeni Şifre Tekrar', show:showNew, toggle:()=>setShowNew(!showNew) },
           ].map(({ id, key, label, show, toggle }) => (
             <div key={key}>
-              <label className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
+              <label className="text-[#546E7A] dark:text-[#A5D6A7] text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
-                <input id={id} type={show ? 'text' : 'password'}
-                  value={passForm[key]}
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a]" />
+                <input id={id} type={show ? 'text' : 'password'} value={passForm[key]}
                   onChange={e => setPassForm(p => ({ ...p, [key]: e.target.value }))}
                   placeholder="••••••" className="input-field pl-10 pr-10" required />
                 <button type="button" onClick={toggle}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#90A4AE] dark:text-[#4a7a4a] hover:text-[#546E7A] transition-colors">
                   {show ? <EyeOff size={14} /> : <Eye size={14} />}
                 </button>
               </div>
             </div>
           ))}
-
           <button type="submit" id="btn-save-password" disabled={saving}
             className="btn-primary disabled:opacity-50 py-3 w-full justify-center">
             {saving

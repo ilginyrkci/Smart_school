@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, ArrowLeftRight, BarChart3, Brain, Wallet, TrendingUp, LogOut, Settings } from 'lucide-react'
+import { LayoutDashboard, ArrowLeftRight, BarChart3, Brain, Wallet, TrendingUp, LogOut, Settings, Sun, Moon } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 
 const navItems = [
   { to: '/',             icon: LayoutDashboard, label: 'Dashboard',   id: 'nav-dashboard' },
@@ -15,6 +16,7 @@ const initials = (name = '') =>
 
 export default function Sidebar() {
   const { user, logout } = useAuth()
+  const { isDark, toggle } = useTheme()
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -23,18 +25,18 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] bg-white">
+    <aside className="hidden lg:flex w-64 flex-shrink-0 flex-col h-screen border-r border-[#C8E6C9] dark:border-[#2d4a2d] bg-white dark:bg-[#152015]">
 
       {/* Logo */}
-      <div className="p-6 border-b border-[#C8E6C9]">
+      <div className="p-6 border-b border-[#C8E6C9] dark:border-[#2d4a2d]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-md"
                style={{ background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' }}>
             <TrendingUp size={20} className="text-white" />
           </div>
           <div>
-            <h1 className="text-sm font-bold text-[#263238] leading-tight">Akıllı Harçlık</h1>
-            <p className="text-xs font-medium" style={{ color: '#2E7D32' }}>Finans Koçu</p>
+            <h1 className="text-sm font-bold text-[#263238] dark:text-[#E8F5E9] leading-tight">Akıllı Harçlık</h1>
+            <p className="text-xs font-medium text-[#2E7D32] dark:text-[#66BB6A]">Finans Koçu</p>
           </div>
         </div>
       </div>
@@ -47,14 +49,13 @@ export default function Sidebar() {
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive
                   ? 'text-white shadow-sm'
-                  : 'text-[#546E7A] hover:text-[#2E7D32] hover:bg-[#E8F5E9]'
+                  : 'text-[#546E7A] dark:text-[#A5D6A7] hover:text-[#2E7D32] dark:hover:text-[#66BB6A] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]'
               }`
             }
-            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' } : {}}
-          >
+            style={({ isActive }) => isActive ? { background: 'linear-gradient(135deg, #2E7D32, #66BB6A)' } : {}}>
             {({ isActive }) => (
               <>
-                <Icon size={18} className={isActive ? 'text-white' : 'text-[#78909C] group-hover:text-[#2E7D32]'} />
+                <Icon size={18} className={isActive ? 'text-white' : 'text-[#78909C] dark:text-[#81C784] group-hover:text-[#2E7D32] dark:group-hover:text-[#66BB6A]'} />
                 {label}
                 {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white opacity-70" />}
               </>
@@ -63,12 +64,24 @@ export default function Sidebar() {
         ))}
       </nav>
 
+      {/* Dark mode toggle */}
+      <div className="px-3 pb-2">
+        <button onClick={toggle} id="btn-theme-toggle"
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all
+            text-[#546E7A] dark:text-[#A5D6A7] hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]">
+          {isDark
+            ? <><Sun size={16} className="text-[#FFC107]" /> Açık Mod</>
+            : <><Moon size={16} className="text-[#546E7A]" /> Koyu Mod</>
+          }
+        </button>
+      </div>
+
       {/* User Footer */}
-      <div className="p-3 border-t border-[#C8E6C9] space-y-1">
+      <div className="p-3 border-t border-[#C8E6C9] dark:border-[#2d4a2d] space-y-1">
         <NavLink to="/profile" id="nav-profile"
           className={({ isActive }) =>
             `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group cursor-pointer ${
-              isActive ? 'bg-[#E8F5E9]' : 'hover:bg-[#E8F5E9]'
+              isActive ? 'bg-[#E8F5E9] dark:bg-[#1f3a1f]' : 'hover:bg-[#E8F5E9] dark:hover:bg-[#1f3a1f]'
             }`
           }>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black text-white flex-shrink-0"
@@ -76,14 +89,14 @@ export default function Sidebar() {
             {initials(user?.displayName)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-[#263238] truncate">{user?.displayName || 'Kullanıcı'}</p>
-            <p className="text-xs text-[#78909C] truncate">@{user?.username}</p>
+            <p className="text-sm font-semibold text-[#263238] dark:text-[#E8F5E9] truncate">{user?.displayName || 'Kullanıcı'}</p>
+            <p className="text-xs text-[#78909C] dark:text-[#81C784] truncate">@{user?.username}</p>
           </div>
-          <Settings size={14} className="text-[#90A4AE] group-hover:text-[#2E7D32] transition-colors flex-shrink-0" />
+          <Settings size={14} className="text-[#90A4AE] dark:text-[#66BB6A] group-hover:text-[#2E7D32] transition-colors flex-shrink-0" />
         </NavLink>
 
         <button id="btn-logout" onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#546E7A] hover:text-rose-600 hover:bg-rose-50 transition-all text-sm font-medium">
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#546E7A] dark:text-[#A5D6A7] hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all text-sm font-medium">
           <LogOut size={16} />
           Çıkış Yap
         </button>
