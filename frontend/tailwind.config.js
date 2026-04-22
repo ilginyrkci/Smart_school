@@ -9,13 +9,13 @@ export default {
       },
       colors: {
         brand: {
-          primary:   '#FF6B6B',
-          secondary: '#4D96FF',
-          bg:        '#FFF7ED',
-          accent:    '#FFD93D',
-          text:      '#2D2D2D',
+          primary:   '#4F46E5',
+          secondary: '#A5B4FC',
+          bg:        '#F9FAFB',
+          accent:    '#22C55E',
+          text:      '#111827',
           textMuted: '#6B7280',
-          border:    '#FFDCC8',
+          border:    '#C7D2FE',
           card:      '#FFFFFF',
         }
       },

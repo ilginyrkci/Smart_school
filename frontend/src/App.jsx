@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+﻿import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import Sidebar      from './components/Sidebar'
@@ -16,10 +16,10 @@ function ProtectedApp() {
   const { user, loading } = useAuth()
 
   if (loading) return (
-    <div className="flex items-center justify-center h-screen bg-[#FFF7ED] dark:bg-[#0a0a0a]">
+    <div className="flex items-center justify-center h-screen bg-[#F9FAFB] dark:bg-[#0a0a0a]">
       <div className="text-center">
-        <div className="w-14 h-14 border-2 border-[#FF6B6B] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <p className="text-[#6B7280] dark:text-[#FFB3B3] text-sm">Yükleniyor...</p>
+        <div className="w-14 h-14 border-2 border-[#4F46E5] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-[#6B7280] dark:text-[#A5B4FC] text-sm">Yükleniyor...</p>
       </div>
     </div>
   )
@@ -27,9 +27,9 @@ function ProtectedApp() {
   if (!user) return <Navigate to="/login" replace />
 
   return (
-    <div className="flex h-screen bg-[#FFF7ED] dark:bg-[#0a0a0a] overflow-hidden">
+    <div className="flex h-screen bg-[#F9FAFB] dark:bg-[#0a0a0a] overflow-hidden">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0 bg-[#FFF7ED] dark:bg-[#0a0a0a]">
+      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0 bg-[#F9FAFB] dark:bg-[#0a0a0a]">
         <Routes>
           <Route path="dashboard"    element={<Dashboard />} />
           <Route path="transactions" element={<Transactions />} />

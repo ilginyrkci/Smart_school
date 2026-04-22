@@ -31,7 +31,7 @@ export default function Profile() {
   const [profileForm, setProfileForm] = useState({
     displayName: user?.displayName || '',
     email:       user?.email       || '',
-    avatarColor: user?.avatarColor || '#FF6B6B',
+    avatarColor: user?.avatarColor || '#4F46E5',
   })
 
   const [newUsername, setNewUsername] = useState('')
@@ -90,11 +90,11 @@ export default function Profile() {
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in max-w-2xl">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Link to="/" className="p-2 text-[#6B7280] hover:text-[#2D2D2D] hover:bg-[#FFF0E4] rounded-xl transition-all">
+        <Link to="/" className="p-2 text-[#6B7280] hover:text-[#111827] hover:bg-[#EEF2FF] rounded-xl transition-all">
           <ArrowLeft size={18} />
         </Link>
         <div>
-          <h2 className="text-2xl lg:text-3xl font-black text-[#2D2D2D]">Profil Ayarları</h2>
+          <h2 className="text-2xl lg:text-3xl font-black text-[#111827]">Profil Ayarları</h2>
           <p className="text-[#6B7280] text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function Profile() {
           {initials(profileForm.displayName || user?.displayName)}
         </div>
         <div>
-          <p className="text-[#2D2D2D] font-bold text-xl">{profileForm.displayName || user?.displayName}</p>
+          <p className="text-[#111827] font-bold text-xl">{profileForm.displayName || user?.displayName}</p>
           <p className="text-[#6B7280] text-sm">@{user?.username}</p>
           <p className="text-[#B0B8C4] text-xs mt-1">
             Üyelik: {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('tr-TR') : '—'}
@@ -118,7 +118,7 @@ export default function Profile() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-[#FFF7ED] dark:bg-[#0a0a0a] border border-[#FFDCC8] dark:border-[#4a1a1a] rounded-xl p-1 flex-wrap">
+      <div className="flex gap-1 bg-[#F9FAFB] dark:bg-[#0a0a0a] border border-[#C7D2FE] dark:border-[#1a1a4a] rounded-xl p-1 flex-wrap">
         {[
           ['profile',  '👤 Profil'],
           ['username', '🔤 Kullanıcı Adı'],
@@ -126,9 +126,9 @@ export default function Profile() {
         ].map(([val, label]) => (
           <button key={val} onClick={() => switchTab(val)}
             className={`px-3 py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all flex-1 ${
-              tab === val ? 'text-white shadow-md' : 'text-[#6B7280] dark:text-[#FFB3B3] hover:text-[#FF6B6B]'
+              tab === val ? 'text-white shadow-md' : 'text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#4F46E5]'
             }`}
-            style={tab === val ? { background: 'linear-gradient(135deg,#FF6B6B,#4D96FF)' } : {}}>
+            style={tab === val ? { background: 'linear-gradient(135deg,#4F46E5,#A5B4FC)' } : {}}>
             {label}
           </button>
         ))}
@@ -136,9 +136,9 @@ export default function Profile() {
 
       {/* Bildirimler */}
       {success && (
-        <div className="flex items-center gap-2 bg-[#FFF0E4] border border-[#FFB3B3] rounded-xl px-4 py-3">
-          <CheckCircle size={16} className="text-[#FF6B6B] flex-shrink-0" />
-          <p className="text-[#FF6B6B] text-sm">{success}</p>
+        <div className="flex items-center gap-2 bg-[#EEF2FF] border border-[#A5B4FC] rounded-xl px-4 py-3">
+          <CheckCircle size={16} className="text-[#4F46E5] flex-shrink-0" />
+          <p className="text-[#4F46E5] text-sm">{success}</p>
         </div>
       )}
       {error && (
@@ -152,9 +152,9 @@ export default function Profile() {
       {tab === 'profile' && (
         <form onSubmit={handleProfileSave} className="glass-card p-6 space-y-5">
           <div>
-            <label className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
+            <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Ad Soyad</label>
             <div className="relative">
-              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#5a1a1a]" />
+              <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
               <input id="input-profile-name" type="text" value={profileForm.displayName}
                 onChange={e => setProfileForm(p => ({ ...p, displayName: e.target.value }))}
                 placeholder="Adınız Soyadınız" className="input-field pl-10" />
@@ -162,9 +162,9 @@ export default function Profile() {
           </div>
 
           <div>
-            <label className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
+            <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">E-posta</label>
             <div className="relative">
-              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#5a1a1a]" />
+              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
               <input id="input-profile-email" type="email" value={profileForm.email}
                 onChange={e => setProfileForm(p => ({ ...p, email: e.target.value }))}
                 placeholder="email@example.com" className="input-field pl-10" />
@@ -172,7 +172,7 @@ export default function Profile() {
           </div>
 
           <div>
-            <label className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1.5 flex items-center gap-2">
+            <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 flex items-center gap-2">
               <Palette size={12} /> Avatar Rengi
             </label>
             <div className="flex flex-wrap gap-3 mt-2">
@@ -180,7 +180,7 @@ export default function Profile() {
                 <button key={val} type="button" title={label}
                   onClick={() => setProfileForm(p => ({ ...p, avatarColor: val }))}
                   className={`w-9 h-9 rounded-xl transition-all hover:scale-110 ${
-                    profileForm.avatarColor === val ? 'ring-2 ring-[#FF6B6B] dark:ring-[#4D96FF] ring-offset-2 ring-offset-white dark:ring-offset-[#141414] scale-110' : ''
+                    profileForm.avatarColor === val ? 'ring-2 ring-[#4F46E5] dark:ring-[#A5B4FC] ring-offset-2 ring-offset-white dark:ring-offset-[#141414] scale-110' : ''
                   }`}
                   style={{ background: `linear-gradient(135deg, ${val}, ${val}88)` }} />
               ))}
@@ -199,9 +199,9 @@ export default function Profile() {
       {/* ─── Tab: Kullanıcı Adı ─── */}
       {tab === 'username' && (
         <form onSubmit={handleUsernameChange} className="glass-card p-6 space-y-5">
-          <div className="p-4 bg-[#FFF0E4] dark:bg-[#1a1a1a] rounded-2xl border border-[#FFDCC8] dark:border-[#4a1a1a]">
-            <p className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1">Mevcut Kullanıcı Adı</p>
-            <p className="text-[#2D2D2D] dark:text-[#FFF0E4] font-bold text-lg">@{user?.username}</p>
+          <div className="p-4 bg-[#EEF2FF] dark:bg-[#1a1a1a] rounded-2xl border border-[#C7D2FE] dark:border-[#1a1a4a]">
+            <p className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1">Mevcut Kullanıcı Adı</p>
+            <p className="text-[#111827] dark:text-[#EEF2FF] font-bold text-lg">@{user?.username}</p>
           </div>
           <div className="flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl">
             <AlertCircle size={16} className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
@@ -211,15 +211,15 @@ export default function Profile() {
           </div>
 
           <div>
-            <label className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Yeni Kullanıcı Adı</label>
+            <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">Yeni Kullanıcı Adı</label>
             <div className="relative">
-              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#5a1a1a]" />
+              <AtSign size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
               <input id="input-new-username" type="text" value={newUsername}
                 onChange={e => setNewUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                 placeholder="yeni_kullanici_adi" className="input-field pl-10 font-mono" maxLength={30} />
             </div>
             {newUsername && (
-              <p className={`text-xs mt-1.5 flex items-center gap-1 ${newUsername.length >= 3 ? 'text-[#FF6B6B] dark:text-[#4D96FF]' : 'text-[#9CA3AF] dark:text-[#FF9999]'}`}>
+              <p className={`text-xs mt-1.5 flex items-center gap-1 ${newUsername.length >= 3 ? 'text-[#4F46E5] dark:text-[#A5B4FC]' : 'text-[#9CA3AF] dark:text-[#818CF8]'}`}>
                 {newUsername.length >= 3 ? <CheckCircle size={11} /> : <AlertCircle size={11} />}
                 {newUsername.length}/30 karakter{newUsername.length < 3 && ' (min. 3)'}
               </p>
@@ -245,14 +245,14 @@ export default function Profile() {
             { id:'input-confirm-pass', key:'confirmPassword', label:'Yeni Şifre Tekrar', show:showNew, toggle:()=>setShowNew(!showNew) },
           ].map(({ id, key, label, show, toggle }) => (
             <div key={key}>
-              <label className="text-[#6B7280] dark:text-[#FFB3B3] text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
+              <label className="text-[#6B7280] dark:text-[#A5B4FC] text-xs font-semibold uppercase tracking-wide mb-1.5 block">{label}</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#5a1a1a]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a]" />
                 <input id={id} type={show ? 'text' : 'password'} value={passForm[key]}
                   onChange={e => setPassForm(p => ({ ...p, [key]: e.target.value }))}
                   placeholder="••••••" className="input-field pl-10 pr-10" required />
                 <button type="button" onClick={toggle}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#5a1a1a] hover:text-[#6B7280] transition-colors">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#251a5a] hover:text-[#6B7280] transition-colors">
                   {show ? <EyeOff size={14} /> : <Eye size={14} />}
                 </button>
               </div>
