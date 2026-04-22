@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   TrendingUp, Menu, X, ArrowRight, ChevronDown,
@@ -102,7 +102,7 @@ export default function LandingPage() {
               className="px-4 py-2 rounded-xl text-sm font-semibold text-[#FF6B6B] border border-[#FFDCC8] dark:border-[#4a1a1a] hover:bg-[#FFF0E4] dark:hover:bg-[#1a0f0f] transition-all">
               Giriş Yap
             </Link>
-            <Link to="/register"
+            <Link to="/login"
               className="px-4 py-2.5 rounded-xl text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
               style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
               Ücretsiz Başla
@@ -132,7 +132,7 @@ export default function LandingPage() {
             ))}
             <div className="pt-3 flex gap-3 border-t border-[#FFDCC8] dark:border-[#4a1a1a]">
               <Link to="/login" className="flex-1 text-center py-2.5 rounded-xl text-sm font-semibold text-[#FF6B6B] border border-[#FFDCC8] dark:border-[#4a1a1a]">Giriş Yap</Link>
-              <Link to="/register" className="flex-1 text-center py-2.5 rounded-xl text-sm font-bold text-white"
+              <Link to="/login" className="flex-1 text-center py-2.5 rounded-xl text-sm font-bold text-white"
                 style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>Kayıt Ol</Link>
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link to="/register"
+            <Link to="/login"
               className="px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1 flex items-center gap-2"
               style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
               Okul Mailinle Başla <ArrowRight size={20} />
@@ -385,7 +385,7 @@ export default function LandingPage() {
             Okul mailinle saniyeler içinde ücretsiz hesap oluştur.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/register"
+            <Link to="/login"
               className="px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl flex items-center gap-2"
               style={{ background: 'linear-gradient(135deg, #FF6B6B, #4D96FF)' }}>
               Ücretsiz Başla <ArrowRight size={20} />

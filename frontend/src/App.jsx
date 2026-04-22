@@ -5,7 +5,6 @@ import Sidebar      from './components/Sidebar'
 import BottomNav    from './components/BottomNav'
 import LandingPage  from './pages/LandingPage'
 import LoginPage    from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
 import Dashboard    from './pages/Dashboard'
 import Transactions from './pages/Transactions'
 import Analytics    from './pages/Analytics'
@@ -52,16 +51,15 @@ export default function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            {/* Public Routes */}
-            <Route path="/"         element={<LandingPage />} />
-            <Route path="/login"    element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            {/* Public */}
+            <Route path="/"      element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
 
-            {/* Protected App Routes */}
-            <Route path="/app/*"    element={<ProtectedApp />} />
+            {/* Protected App */}
+            <Route path="/app/*" element={<ProtectedApp />} />
 
             {/* Fallback */}
-            <Route path="*"         element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>
       </AuthProvider>
