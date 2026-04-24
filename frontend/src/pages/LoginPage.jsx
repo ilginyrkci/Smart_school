@@ -58,8 +58,8 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6" style={bgStyle}>
-
-      {/* BG deco */}
+      
+      {/* Background Decorations */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-15"
           style={{ background: 'radial-gradient(circle, #4F46E5, transparent 70%)' }} />
@@ -67,10 +67,9 @@ export default function LoginPage() {
           style={{ background: 'radial-gradient(circle, #A5B4FC, transparent 70%)' }} />
       </div>
 
-      <div className="relative w-full max-w-md">
-
-      {/* Logo Section */}
       <div className="relative w-full max-w-md animate-fade-in">
+        
+        {/* Logo Section */}
         <div className="flex flex-col items-center mb-10">
           <div className="relative group cursor-pointer" onClick={() => navigate('/')}>
             <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#A5B4FC] rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
