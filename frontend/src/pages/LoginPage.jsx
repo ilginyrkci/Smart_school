@@ -86,10 +86,11 @@ export default function LoginPage() {
               { val: 'register', label: 'Kayıt Ol', Icon: UserPlus },
             ].map(({ val, label, Icon }) => (
               <button key={val} onClick={() => switchTab(val)}
-                className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all ${tab === val
-                    ? 'text-[#4F46E5] border-b-2 border-[#4F46E5] bg-[#EEF2FF]/50 dark:bg-[#0f0f14]/50'
-                    : 'text-[#9CA3AF] dark:text-[#818CF8] hover:text-[#4F46E5]'
-                  }`}>
+                className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all border-b-2 ${
+                  tab === val
+                    ? 'text-[#4F46E5] border-[#4F46E5] bg-[#EEF2FF]/50 dark:bg-[#0f0f14]/50'
+                    : 'text-[#9CA3AF] dark:text-[#818CF8] border-transparent hover:text-[#4F46E5]'
+                }`}>
                 <Icon size={15} /> {label}
               </button>
             ))}
