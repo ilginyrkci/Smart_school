@@ -1,6 +1,6 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TrendingUp, Eye, EyeOff, User, Lock, LogIn, UserPlus, ArrowRight, Mail, GraduationCap, CheckCircle, XCircle } from 'lucide-react'
+import { Eye, EyeOff, User, Lock, LogIn, UserPlus, ArrowRight, Mail, GraduationCap, CheckCircle, XCircle } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 
@@ -11,13 +11,13 @@ export default function LoginPage() {
   const { isDark } = useTheme()
   const navigate = useNavigate()
 
-  const [tab, setTab]           = useState('login')
+  const [tab, setTab] = useState('login')
   const [showPass, setShowPass] = useState(false)
-  const [loading, setLoading]   = useState(false)
-  const [error, setError]       = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const [loginForm, setLoginForm] = useState({ username: '', password: '' })
-  const [regForm, setRegForm]     = useState({ displayName: '', username: '', email: '', password: '', confirmPass: '' })
+  const [regForm, setRegForm] = useState({ displayName: '', username: '', email: '', password: '', confirmPass: '' })
 
   const setL = (k, v) => setLoginForm(p => ({ ...p, [k]: v }))
   const setR = (k, v) => setRegForm(p => ({ ...p, [k]: v }))
@@ -71,10 +71,7 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 rounded-3xl flex items-center justify-center shadow-xl mb-4"
-            style={{ background: 'linear-gradient(135deg, #4F46E5, #A5B4FC)' }}>
-            <TrendingUp size={30} className="text-white" />
-          </div>
+          <img src="/logo-karanlik.png" alt="Akıllı Harçlık" className="w-16 h-16 rounded-3xl object-contain shadow-xl mb-4" />
           <h1 className="text-2xl font-black text-[#111827] dark:text-[#EEF2FF]">Akıllı Harçlık</h1>
           <p className="text-sm font-semibold text-[#4F46E5] mt-1">Öğrenci Finans Koçu</p>
         </div>
@@ -85,15 +82,14 @@ export default function LoginPage() {
           {/* Tabs */}
           <div className="flex border-b border-[#C7D2FE] dark:border-[#1a1a4a]">
             {[
-              { val: 'login',    label: 'Giriş Yap', Icon: LogIn    },
-              { val: 'register', label: 'Kayıt Ol',  Icon: UserPlus },
+              { val: 'login', label: 'Giriş Yap', Icon: LogIn },
+              { val: 'register', label: 'Kayıt Ol', Icon: UserPlus },
             ].map(({ val, label, Icon }) => (
               <button key={val} onClick={() => switchTab(val)}
-                className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all ${
-                  tab === val
+                className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all ${tab === val
                     ? 'text-[#4F46E5] border-b-2 border-[#4F46E5] bg-[#EEF2FF]/50 dark:bg-[#0f0f14]/50'
                     : 'text-[#9CA3AF] dark:text-[#818CF8] hover:text-[#4F46E5]'
-                }`}>
+                  }`}>
                 <Icon size={15} /> {label}
               </button>
             ))}
@@ -162,15 +158,14 @@ export default function LoginPage() {
                     <input id="input-email" type="email" value={regForm.email}
                       onChange={e => setR('email', e.target.value)}
                       placeholder="adi@universite.edu.tr"
-                      className={`input-field pl-10 pr-9 ${
-                        emailStatus === 'valid'   ? 'border-green-400' :
-                        emailStatus === 'invalid' ? 'border-red-400'   : ''
-                      }`} required />
-                    {emailStatus === 'valid'   && <CheckCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />}
-                    {emailStatus === 'invalid' && <XCircle     size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" />}
+                      className={`input-field pl-10 pr-9 ${emailStatus === 'valid' ? 'border-green-400' :
+                          emailStatus === 'invalid' ? 'border-red-400' : ''
+                        }`} required />
+                    {emailStatus === 'valid' && <CheckCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />}
+                    {emailStatus === 'invalid' && <XCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" />}
                   </div>
                   {emailStatus === 'invalid' && <p className="text-red-500 text-xs mt-1.5">⚠ .edu.tr veya .edu uzantılı okul maili girin</p>}
-                  {emailStatus === 'valid'   && <p className="text-green-600 dark:text-green-400 text-xs mt-1.5">✓ Okul e-postası onaylandı</p>}
+                  {emailStatus === 'valid' && <p className="text-green-600 dark:text-green-400 text-xs mt-1.5">✓ Okul e-postası onaylandı</p>}
                   <p className="text-[#B0B8C4] dark:text-[#1e1a4a] text-xs mt-1.5 flex items-center gap-1">
                     <GraduationCap size={11} className="text-[#A5B4FC]" />
                     Yalnızca öğrenci ve öğretim üyelerine açıktır
@@ -197,11 +192,10 @@ export default function LoginPage() {
                     <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#B0B8C4] dark:text-[#1e1a4a]" />
                     <input id="input-confirmPass" type={showPass ? 'text' : 'password'} value={regForm.confirmPass}
                       onChange={e => setR('confirmPass', e.target.value)}
-                      placeholder="••••••" className={`input-field pl-10 pr-9 ${
-                        passMatch === true ? 'border-green-400' : passMatch === false ? 'border-red-400' : ''
-                      }`} required />
-                    {passMatch === true  && <CheckCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />}
-                    {passMatch === false && <XCircle     size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" />}
+                      placeholder="••••••" className={`input-field pl-10 pr-9 ${passMatch === true ? 'border-green-400' : passMatch === false ? 'border-red-400' : ''
+                        }`} required />
+                    {passMatch === true && <CheckCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500" />}
+                    {passMatch === false && <XCircle size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" />}
                   </div>
                   {passMatch === false && <p className="text-red-500 text-xs mt-1.5">Şifreler eşleşmiyor</p>}
                 </div>

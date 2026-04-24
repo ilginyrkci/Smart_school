@@ -1,7 +1,7 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  TrendingUp, Menu, X, ArrowRight, ChevronDown,
+  Menu, X, ArrowRight, ChevronDown,
   Brain, BarChart3, Wallet, Shield, Users, Mail,
   MapPin, Phone, Star, GraduationCap, Sparkles,
   ChevronUp, Send, Bot, MessageCircle
@@ -124,10 +124,7 @@ export default function LandingPage() {
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <button onClick={() => scrollTo('home')} className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md"
-              style={{ background: 'linear-gradient(135deg, #4F46E5, #A5B4FC)' }}>
-              <TrendingUp size={18} className="text-white" />
-            </div>
+            <img src="/logo-karanlik.png" alt="Akıllı Harçlık" className="w-9 h-9 rounded-xl object-contain shadow-md" />
             <span className="text-lg font-black text-[#111827] dark:text-[#EEF2FF]">Akıllı Harçlık</span>
           </button>
 
@@ -453,10 +450,7 @@ export default function LandingPage() {
       <footer className="border-t border-[#C7D2FE] dark:border-[#1a1a4a] bg-white/50 dark:bg-[#0f0f0f] py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #4F46E5, #A5B4FC)' }}>
-              <TrendingUp size={16} className="text-white" />
-            </div>
+            <img src="/logo-karanlik.png" alt="Akıllı Harçlık" className="w-8 h-8 rounded-lg object-contain shadow-sm" />
             <span className="font-black text-[#111827] dark:text-[#EEF2FF]">Akıllı Harçlık</span>
           </div>
 

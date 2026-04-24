@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Plus, TrendingUp, TrendingDown, DollarSign, PiggyBank, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { reportService, budgetService, transactionService } from '../services/api'
@@ -45,7 +45,7 @@ export default function Dashboard() {
 
   const savings = summary ? ((summary.totalIncome - summary.totalExpenses) / (summary.totalIncome || 1)) * 100 : 0
   const pct     = budget?.percentage || 0
-  const pctBg   = pct >= 90 ? 'bg-red-500' : pct >= 75 ? 'bg-[#22C55E]' : 'bg-[#4F46E5]'
+  const pctBg   = pct >= 90 ? 'bg-red-500' : pct >= 75 ? 'bg-amber-400' : 'bg-[#4F46E5]'
 
   const cards = [
     { id: 'stat-income',   title: 'Toplam Gelir',   val: fmt(summary?.totalIncome || 0),
@@ -91,7 +91,7 @@ export default function Dashboard() {
             <p className="text-[#9CA3AF] dark:text-[#818CF8] text-xs mt-0.5">Limit: {fmt(budget?.monthlyLimit || 0)}</p>
           </div>
           <div className="text-right">
-            <span className={`text-2xl font-black ${pct >= 90 ? 'text-red-500' : pct >= 75 ? 'text-[#22C55E]' : 'text-[#4F46E5] dark:text-[#A5B4FC]'}`}>
+              <span className={`text-2xl font-black ${pct >= 90 ? 'text-red-500' : pct >= 75 ? 'text-amber-400' : 'text-[#4F46E5] dark:text-[#A5B4FC]'}`}>
               %{pct.toFixed(0)}
             </span>
             <p className="text-[#9CA3AF] dark:text-[#818CF8] text-xs">kullanıldı</p>

@@ -1,5 +1,6 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { coachService } from '../services/api'
+import { useTheme } from '../context/ThemeContext'
 
 const LEVEL_STYLES = {
   danger:  { bg:'bg-red-50 dark:bg-red-900/20',      border:'border-red-200 dark:border-red-800',     title:'text-red-700 dark:text-red-400' },
@@ -14,7 +15,7 @@ const fmt = (n) => new Intl.NumberFormat('tr-TR', { style: 'currency', currency:
 export default function Coach() {
   const [data, setData]       = useState(null)
   const [loading, setLoading] = useState(true)
-  const isDark = document.documentElement.classList.contains('dark')
+  const { isDark } = useTheme()
 
   useEffect(() => {
     coachService.getAdvice()

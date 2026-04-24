@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { User, Mail, Lock, Save, Eye, EyeOff, ArrowLeft, Palette, CheckCircle, AlertCircle, AtSign } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
@@ -90,12 +90,12 @@ export default function Profile() {
     <div className="p-4 lg:p-6 space-y-5 animate-fade-in max-w-2xl">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Link to="/" className="p-2 text-[#6B7280] hover:text-[#111827] hover:bg-[#EEF2FF] rounded-xl transition-all">
+        <Link to="/app/dashboard" className="p-2 text-[#6B7280] dark:text-[#A5B4FC] hover:text-[#111827] dark:hover:text-[#EEF2FF] hover:bg-[#EEF2FF] dark:hover:bg-[#1a1a1a] rounded-xl transition-all">
           <ArrowLeft size={18} />
         </Link>
         <div>
-          <h2 className="text-2xl lg:text-3xl font-black text-[#111827]">Profil Ayarları</h2>
-          <p className="text-[#6B7280] text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
+          <h2 className="text-2xl lg:text-3xl font-black text-[#111827] dark:text-[#EEF2FF]">Profil Ayarları</h2>
+          <p className="text-[#6B7280] dark:text-[#A5B4FC] text-xs lg:text-sm mt-0.5">Hesap bilgilerinizi düzenleyin</p>
         </div>
       </div>
 

@@ -124,10 +124,13 @@ public class AuthService {
         if (body.containsKey("email")) {
             String email = body.get("email").toString();
             if (!email.isBlank() && !email.equals(user.getEmail())) {
-                if (userRepository.existsByEmail(email)) {
+                // Güvenlik: profil güncellemede de okul maili kontrolü
+                validateSchoolEmail(email);
+                String normalizedEmail = email.toLowerCase().trim();
+                if (userRepository.existsByEmail(normalizedEmail)) {
                     throw new RuntimeException("Bu e-posta zaten kullanılıyor.");
                 }
-                user.setEmail(email);
+                user.setEmail(normalizedEmail);
             }
         }
         if (body.containsKey("avatarColor")) {

@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Edit3, Check, X } from 'lucide-react'
 import { budgetService } from '../services/api'
 
@@ -33,8 +33,8 @@ export default function Budget() {
   )
 
   const pct = budget.percentage || 0
-  const pctColor = pct >= 90 ? '#EF5350' : pct >= 75 ? '#22C55E' : '#4F46E5'
-  const pctBg    = pct >= 90 ? 'bg-red-500' : pct >= 75 ? 'bg-[#22C55E]' : 'bg-[#4F46E5]'
+  const pctColor = pct >= 90 ? '#EF5350' : pct >= 75 ? '#f59e0b' : '#4F46E5'
+  const pctBg    = pct >= 90 ? 'bg-red-500' : pct >= 75 ? 'bg-amber-400' : 'bg-[#4F46E5]'
 
   const segments = [
     { label: 'Zorunlu Giderler', amount: budget.necessary || 0, color: '#3b82f6', emoji: '🏠',

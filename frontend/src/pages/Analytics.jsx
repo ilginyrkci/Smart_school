@@ -1,10 +1,11 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Chart as ChartJS, CategoryScale, LinearScale, BarElement,
   LineElement, PointElement, ArcElement, Title, Tooltip, Legend, Filler
 } from 'chart.js'
 import { Bar, Doughnut, Line } from 'react-chartjs-2'
 import { reportService } from '../services/api'
+import { useTheme } from '../context/ThemeContext'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, ArcElement, Title, Tooltip, Legend, Filler)
 
@@ -33,7 +34,7 @@ export default function Analytics() {
   const [cats, setCats]   = useState([])
   const [trend, setTrend] = useState([])
   const [loading, setLoading] = useState(true)
-  const isDark = document.documentElement.classList.contains('dark')
+  const { isDark } = useTheme()
 
   useEffect(() => {
     Promise.all([reportService.getCategories(), reportService.getMonthlyTrend()])

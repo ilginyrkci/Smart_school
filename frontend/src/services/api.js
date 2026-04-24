@@ -21,9 +21,9 @@ API.interceptors.response.use(
     if (err.response?.status === 401) {
       localStorage.removeItem('finans_token')
       localStorage.removeItem('finans_user')
-      // Sayfayı kök dizine yönlendir → React LoginPage gösterir
-      if (window.location.pathname !== '/') {
-        window.location.href = '/'
+      // Giriş sayfasına yönlendir
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login'
       } else {
         window.location.reload()
       }

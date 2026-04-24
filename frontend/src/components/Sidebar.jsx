@@ -1,4 +1,4 @@
-﻿import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { LayoutDashboard, ArrowLeftRight, BarChart3, Brain, Wallet, LogOut, Settings, Sun, Moon } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
@@ -30,7 +30,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="p-6 border-b border-[#C7D2FE] dark:border-[#1a1a4a]">
         <div className="flex items-center gap-3">
-          <img src="/logo-karanlık.png" alt="Akıllı Harçlık" className="w-10 h-10 rounded-2xl object-contain shadow-md" />
+          <img src="/logo-karanlik.png" alt="Akıllı Harçlık" className="w-10 h-10 rounded-2xl object-contain shadow-md" />
           <div>
             <h1 className="text-sm font-bold text-[#111827] dark:text-[#EEF2FF] leading-tight">Akıllı Harçlık</h1>
             <p className="text-xs font-medium text-[#4F46E5]">Finans Koçu</p>
